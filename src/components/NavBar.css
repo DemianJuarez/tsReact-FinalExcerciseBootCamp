@@ -1,0 +1,94 @@
+.nav-container {
+  height: 42px;
+  background-color: black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: whitesmoke;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.left-side-nav {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.right-side-nav {
+  display: flex;
+  gap: 50px;
+  font-size: 22px;
+  align-items: center;
+}
+
+.image-gm2-nav {
+  height: 28px;
+}
+
+.gm2-nav {
+  display: flex;
+  align-items: center;
+}
+
+.image-profile-nav {
+  height: 28px;
+}
+
+.title-nav {
+  text-decoration: none;
+  color: whitesmoke;
+}
+
+.metrics-nav {
+  text-decoration: none;
+  color: whitesmoke;
+  padding: 4px;
+}
+
+.metrics-nav:hover {
+  background-color: whitesmoke;
+  color: black;
+  border-radius: 1rem;
+}
+
+.cart-nav {
+  text-decoration: none;
+  color: whitesmoke;
+  padding: 4px;
+}
+
+.cart-nav:hover {
+  background-color: whitesmoke;
+  color: black;
+  border-radius: 1rem;
+}
+
+.wishlist-nav {
+  text-decoration: none;
+  color: whitesmoke;
+  padding: 4px;
+}
+
+.wishlist-nav:hover {
+  background-color: whitesmoke;
+  color: black;
+  border-radius: 1rem;
+}
+
+.shop-nav {
+  text-decoration: none;
+  color: whitesmoke;
+  padding: 4px;
+}
+
+.shop-nav:hover {
+  background-color: whitesmoke;
+  color: black;
+  border-radius: 1rem;
+}
+
+.login-nav {
+  display: flex;
+  align-items: center;
+}
