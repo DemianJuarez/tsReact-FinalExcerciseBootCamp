@@ -7,7 +7,7 @@ type ButtonProps = {
 function Button(props: ButtonProps) {
   const { text } = props;
 
-  return <button>{text}</button>;
+  return <button className="card-button">{text}</button>;
 }
 
 export { Button };
