@@ -92,3 +92,9 @@
   display: flex;
   align-items: center;
 }
+
+.active {
+  background-color: whitesmoke;
+  color: black;
+  border-radius: 1rem;
+}

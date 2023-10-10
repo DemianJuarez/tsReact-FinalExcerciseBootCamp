@@ -1,5 +1,5 @@
 import React from "react";
 
-export const WishList = () => {
+export const WishListPage = () => {
   return <div>WishList</div>;
 };

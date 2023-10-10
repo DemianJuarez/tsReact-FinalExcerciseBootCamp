@@ -6,9 +6,10 @@ import { ProductProvider } from "./context/ProductContext";
 import { LayoutPage } from "./layout/LayoutPage";
 import "./main.css";
 import { MetricsPage } from "./pages/MetricsPage.tsx";
-import { Login } from "./pages/Login.tsx";
+import { LoginPage } from "./pages/LoginPage.tsx";
 import { CartPage } from "./pages/CartPage.tsx";
-import { WishList } from "./pages/WishList.tsx";
+import { WishListPage } from "./pages/WishListPage.tsx";
+import { ShopPage } from "./pages/ShopPage.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -43,7 +44,15 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
             path="/wishList"
             element={
               <LayoutPage>
-                <WishList />
+                <WishListPage />
+              </LayoutPage>
+            }
+          />
+          <Route
+            path="/shop"
+            element={
+              <LayoutPage>
+                <ShopPage />
               </LayoutPage>
             }
           />
@@ -51,7 +60,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
             path="/login"
             element={
               <LayoutPage>
-                <Login />
+                <LoginPage />
               </LayoutPage>
             }
           />
