@@ -1,22 +1,13 @@
-import './Button.css'
+import "./Button.css";
 
 type ButtonProps = {
-    text: string;
-}
-
+  text: string;
+};
 
 function Button(props: ButtonProps) {
-    const { text } = props
+  const { text } = props;
 
-    return (
-        <button>{text}</button>
-
-
-    )
-
-
+  return <button>{text}</button>;
 }
 
-
-
-export { Button }
+export { Button };
