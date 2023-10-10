@@ -1,10 +1,10 @@
-import { useContext } from "react";
 import { ProductContext } from "./context/ProductContext";
-
+import { useContext } from "react";
 function App() {
   const { products } = useContext(ProductContext);
   console.log(products);
   return (
+
     <div>
       <h1>Landing</h1>
       <p>
@@ -18,6 +18,7 @@ function App() {
           ))}
       </p>
     </div>
+
   );
 }
 

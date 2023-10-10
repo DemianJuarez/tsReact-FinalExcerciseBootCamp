@@ -1,0 +1,65 @@
+aside{
+    background-color: #B6B6B6;
+    height: 100vh;
+    width: 287px;
+   padding: 10px;
+
+}
+.general-container{
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    width: 287px ;
+    justify-content: space-around;
+}
+.filter-title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 25px;
+}
+.name-desc{
+    display: flex;
+}
+span{
+    color: #0E0E0E;
+font-family: Inter;
+font-size: 15px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+.name-desc input{
+ background: #D9D9D9;
+box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25) inset;
+height: 15px;
+border-radius: 10px;
+width: 150px;
+}
+.input-r1{
+    padding-bottom: 20px;
+    display: flex;
+justify-content: space-between
+}
+.input-r1 input {
+    width: 150px;
+    ;
+    
+}
+.input-r2{
+    display: flex;
+justify-content: space-between
+}
+.input-r2 input{
+    width: 150px;
+}
+.categories{
+display: flex;
+justify-content: space-between;
+}
+#categories-select{
+width: 150px;
+height: 24px;
+background: #D9D9D9;
+}
