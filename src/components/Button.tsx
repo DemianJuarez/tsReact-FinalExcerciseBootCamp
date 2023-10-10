@@ -9,7 +9,7 @@ function Button(props: ButtonProps) {
     const { text } = props
 
     return (
-        <button>{text}</button>
+        <button className='card-button'>{text}</button>
 
 
     )
