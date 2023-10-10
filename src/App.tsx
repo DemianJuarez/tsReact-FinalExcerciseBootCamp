@@ -1,8 +1,23 @@
+import { useContext } from "react";
+import { ProductContext } from "./context/ProductContext";
+
 function App() {
+  const { products } = useContext(ProductContext);
+  console.log(products);
   return (
-    <>
-      <h1>Primer commit</h1>
-    </>
+    <div>
+      <h1>Landing</h1>
+      <p>
+        {products &&
+          products.map((e) => (
+            <div className="product" key={e.title}>
+              <p>{e.title}</p>
+              <p>precio q tiene q ir con descuento{e.discountPercentage}</p>
+              <p>{e.stock}</p>
+            </div>
+          ))}
+      </p>
+    </div>
   );
 }
 
