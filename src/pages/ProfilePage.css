@@ -1,29 +1,118 @@
-.profile-container {
+.megadiv {
     display: flex;
     flex-direction: column;
+    width: 30vw;
+    background-color: white;
+    margin-left: 20px;
+    margin-top: 20px;
+    border-radius: 20px;
+
+}
+
+
+.user-profile-image {
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+
+.profile-container {
+    display: flex;
     background-color: #D9D9D9;
-    height: 100vh;
+    height: 100%;
     width: 100vw;
 }
 
 
 .user-name-div {
     display: flex;
-    align-items: center;
-    height: 255px;
-    width: 100vw;
+    justify-content: center;
+    height: 60px;
+    width: 100%;
+    padding-top: 10px;
 }
 
 
 .user-name {
-    padding-left: 35px;
-    font-size: 50px;
+    font-size: 25px;
     color: black;
+
+}
+
+.full-name {
+    display: flex;
+    gap: 5px;
 }
 
 
-.black-div {
+.email-div {
+    display: flex;
+    gap: 5px;
+}
+
+
+.phone-div {
+    display: flex;
+    gap: 5px;
+}
+
+
+.address-div {
+    display: flex;
+    gap: 5px;
+}
+
+
+
+
+.personal-info {
+    display: flex;
+    flex-direction: column;
     height: 320px;
-    width: 100vw;
-    background-color: black;
+    width: 100%;
+}
+
+
+.user-available-items {
+    height: 100%;
+    width: 100%;
+    background-color: #D9D9D9;
+    margin-top: 20px;
+    padding-left: 30px;
+    padding-top: 30px;
+    font-size: 25px;
+}
+
+
+@media only screen and (max-device-width: 480px) {
+    .profile-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .user-available-items {
+        height: 100%;
+        width: 100%;
+        background-color: #D9D9D9;
+        margin-top: 20px;
+        padding-top: 30px;
+        padding-left: 0px;
+        font-size: 25px;
+    }
+
+    .megadiv {
+        display: flex;
+        flex-direction: row;
+        background-color: pink;
+        width: 100%;
+        margin-left: 0px;
+        margin-top: 0px;
+    }
+
+    .black-div {
+        height: 0;
+        width: 0;
+    }
+
 }
