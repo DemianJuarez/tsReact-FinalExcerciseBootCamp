@@ -12,23 +12,27 @@ export const ProfilePage = () => {
                 <div className='user-name-div'>
                     <p className="user-name">User Name</p>
                 </div>
-                <div className='personal-info'>
-                    <div className="full-name">
+                <div className="personal-info-div">
+                    <div className="default-text">
                         <p className='full-name-text'>Full Name</p>
-                        <p className="firstname">Joe</p>
-                        <p className="lastname">Biden</p>
-                    </div>
-                    <div className="email-div">
                         <p className="email-text">Email</p>
-                        <p className='email'>god@gmail.com</p>
-                    </div>
-                    <div className="phone-div">
                         <p className="phone-text">Phone</p>
-                        <p className="phone">12371923798</p>
-                    </div>
-                    <div className="address-div">
                         <p className="address-text">Address</p>
-                        <p className="address">8374 anashe</p>
+                    </div>
+                    <div className='personal-info'>
+                        <div className="full-name">
+                            <p className="firstname">Joe</p>
+                            <p className="lastname">Biden</p>
+                        </div>
+                        <div className="email-div">
+                            <p className='email'>god@gmail.com</p>
+                        </div>
+                        <div className="phone-div">
+                            <p className="phone">12371923798</p>
+                        </div>
+                        <div className="address-div">
+                            <p className="address">8374 anashe</p>
+                        </div>
                     </div>
                 </div>
             </div>
