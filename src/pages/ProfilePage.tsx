@@ -15,7 +15,7 @@ export const ProfilePage = () => {
                 <div className='personal-info'>
                     <div className="full-name">
                         <p className='full-name-text'>Full Name</p>
-                        <p className="firstname">John</p>
+                        <p className="firstname">Joe</p>
                         <p className="lastname">Biden</p>
                     </div>
                     <div className="email-div">
