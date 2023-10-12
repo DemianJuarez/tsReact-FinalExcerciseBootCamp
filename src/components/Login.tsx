@@ -18,7 +18,7 @@ export const Login = () => {
             <p>Username</p> <input className="inputs"></input>
           </div>
           <div className="input2">
-            <span>Password</span>{" "}
+            <span>Password</span>
             <input className="inputs" type="password"></input>
           </div>
         </div>
