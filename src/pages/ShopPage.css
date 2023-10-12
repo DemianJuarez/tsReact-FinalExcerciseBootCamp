@@ -1,0 +1,104 @@
+.shopPageContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: calc(100vh - 42px);
+}
+
+.productsContainer {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: auto;
+  padding-left: 20px;
+  padding-top: 0px;
+  padding-bottom: 20px;
+  padding-right: 20px;
+}
+
+.titleCategory {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.smartphonesCategory {
+  display: flex;
+  flex-direction: column;
+}
+
+.productssmartphones {
+  display: flex;
+  gap: 30px;
+}
+
+.laptopsCategory {
+  display: flex;
+  flex-direction: column;
+}
+
+.productslaptops {
+  display: flex;
+  gap: 30px;
+}
+
+.fragrancesCategory {
+  display: flex;
+  flex-direction: column;
+}
+
+.productsfragrances {
+  display: flex;
+  gap: 30px;
+}
+
+.skincareCategory {
+  display: flex;
+  flex-direction: column;
+}
+
+.productsskincare {
+  display: flex;
+  gap: 30px;
+}
+
+.groceriesCategory {
+  display: flex;
+  flex-direction: column;
+}
+
+.productsgroceries {
+  display: flex;
+  gap: 30px;
+}
+
+.home-decorationCategory {
+  display: flex;
+  flex-direction: column;
+}
+
+.productshome-decoration {
+  display: flex;
+  gap: 30px;
+}
+
+.div-button {
+  display: flex;
+  align-items: center;
+  padding-right: 20px;
+}
+
+.button-load {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 50px;
+  padding: 10px;
+  border-radius: 30px;
+  font-size: 22px;
+}
+
+.button-load:hover {
+  background-color: lightgray;
+}
