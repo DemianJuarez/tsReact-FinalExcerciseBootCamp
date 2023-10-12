@@ -37,7 +37,8 @@ export const ProfilePage = () => {
                 </div>
             </div>
             <div className="user-available-items">
-                <p>Buy history</p>
+                <div className="buy-history"><p>Buy history</p></div>
+
             </div>
         </section>
 
