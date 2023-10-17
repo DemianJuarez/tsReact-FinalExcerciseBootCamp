@@ -1,11 +1,13 @@
 import { useContext } from "react";
 import "./Filter.css";
 import { FilterCategory, ShopContext } from "../context/ShopContext";
+
 export const Filter = () => {
   const { filter, setFilter, min, setMin, max, setMax, setInput } =
     useContext(ShopContext);
   return (
     <aside className="aside-container">
+
       <div className="general-container">
         <div className="filter-title">
           <p>Filters</p>
@@ -63,6 +65,7 @@ export const Filter = () => {
             <option value="skincare">Skincare</option>
             <option value="groceries">Groceries</option>
             <option value="home-decoration">Home-Decoration</option>
+
           </select>
         </div>
       </div>
