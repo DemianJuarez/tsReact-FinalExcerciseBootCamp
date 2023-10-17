@@ -1,5 +1,5 @@
 import "./App.css";
-import { Card } from "./components/Card";
+
 function App() {
   return (
     <section>
@@ -13,9 +13,6 @@ function App() {
       <div className="featured">
         <h3>Featured Products</h3>
         <div className="featured-cards">
-          <Card />
-          <Card />
-          <Card />
         </div>
       </div>
       <footer className="footer-home">

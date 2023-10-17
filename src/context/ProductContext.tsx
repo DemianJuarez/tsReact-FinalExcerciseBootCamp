@@ -31,7 +31,7 @@ interface Response {
   total: number;
 }
 
-interface Producto {
+export interface Producto {
   id: number;
   title: string;
   description: string;
