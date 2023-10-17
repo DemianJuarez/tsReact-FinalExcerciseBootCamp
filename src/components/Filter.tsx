@@ -4,7 +4,6 @@ import { FilterCategory, ShopContext } from "../context/ShopContext";
 export const Filter = () => {
   const { filter, setFilter, min, setMin, max, setMax, setInput } =
     useContext(ShopContext);
-  console.log(min, max);
   return (
     <aside className="aside-container">
       <div className="general-container">
