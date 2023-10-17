@@ -2,9 +2,9 @@ import { useContext } from "react";
 import "./Filter.css";
 import { FilterCategory, ShopContext } from "../context/ShopContext";
 export const Filter = () => {
-  const { filter, setFilter, min, setMin, max, setMax } =
+  const { filter, setFilter, min, setMin, max, setMax, setInput } =
     useContext(ShopContext);
-
+  console.log(min, max);
   return (
     <aside className="aside-container">
       <div className="general-container">
@@ -17,7 +17,12 @@ export const Filter = () => {
               Name Description Brand
             </label>
           </div>
-          <input type="text" name="input" id="input-name-desc-brand" />
+          <input
+            type="text"
+            name="input"
+            id="input-name-desc-brand"
+            onChange={(e) => setInput(e.target.value)}
+          />
         </div>
         <div className="inputs-range">
           <div className="input-r1">
@@ -25,10 +30,10 @@ export const Filter = () => {
             <input
               type="range"
               min="0"
-              max="30"
+              max="2000"
               step="1"
               value={min}
-              onChange={(e) => setMin(e.target.value)}
+              onChange={(e) => setMin(Number(e.target.value))}
             />
             <span>{min}</span>
           </div>
@@ -37,9 +42,10 @@ export const Filter = () => {
             <input
               type="range"
               min="0"
-              max="30"
+              max="2000"
               value={max}
-              onChange={(e) => setMax(e.target.value)}
+              step="1"
+              onChange={(e) => setMax(Number(e.target.value))}
             />
             <span>{max}</span>
           </div>

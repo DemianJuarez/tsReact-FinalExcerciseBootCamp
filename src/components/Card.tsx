@@ -1,7 +1,7 @@
 import "./Card.css";
 import { Button } from "./Button";
 
-type CardProps = {
+export type CardProps = {
   rating: number;
   productImages: string[];
   name: string;
@@ -11,16 +11,8 @@ type CardProps = {
 };
 
 function Card(props: CardProps) {
-  const { rating, productImages, name, price, discountPercentage, stock } =
-    props;
+  const { rating, productImages, name, price, stock } = props;
 
-  const numerator = (
-    price: CardProps["price"],
-    discountPercentage: CardProps["discountPercentage"]
-  ) => {
-    const priceWithDiscount = price * (1 - discountPercentage / 100);
-    return Math.round(priceWithDiscount * 100) / 100;
-  };
   return (
     <div className="card">
       <div className="product-image-div">
@@ -31,7 +23,7 @@ function Card(props: CardProps) {
       </div>
       <div className="product-description">
         <p className="product-name">{name}</p>
-        <p className="product-price">{numerator(price, discountPercentage)}</p>
+        <p className="product-price">{price}</p>
         <p className="product-stock">{stock}</p>
       </div>
       <div className="buttons-div">
