@@ -10,7 +10,6 @@
   align-items: center;
   border: solid;
   box-shadow: 10px 8px 5px black;
-
 }
 .login-title {
   display: flex;
@@ -34,7 +33,6 @@
   border-radius: 10px;
   height: 20px;
   padding: 3px;
-  
 }
 .input1 {
   color: #d9d9d9;
@@ -62,7 +60,7 @@
 .imagen-login {
   width: 200px;
   height: 200px;
-  border-radius: 10PX;
+  border-radius: 10px;
 }
 .button-container {
   display: flex;

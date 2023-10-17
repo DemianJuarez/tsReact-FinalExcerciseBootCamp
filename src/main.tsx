@@ -11,64 +11,67 @@ import { CartPage } from "./pages/CartPage.tsx";
 import { WishListPage } from "./pages/WishListPage.tsx";
 import { ShopPage } from "./pages/ShopPage.tsx";
 import { ShopProvider } from "./context/ShopContext.tsx";
+import { CartWishProvider } from "./context/CartWishContext.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <ProductProvider>
-      <ShopProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <LayoutPage>
-                  <App />
-                </LayoutPage>
-              }
-            />
-            <Route
-              path="/metrics"
-              element={
-                <LayoutPage>
-                  <MetricsPage />
-                </LayoutPage>
-              }
-            />
-            <Route
-              path="/cart"
-              element={
-                <LayoutPage>
-                  <CartPage />
-                </LayoutPage>
-              }
-            />
-            <Route
-              path="/wishList"
-              element={
-                <LayoutPage>
-                  <WishListPage />
-                </LayoutPage>
-              }
-            />
-            <Route
-              path="/shop"
-              element={
-                <LayoutPage>
-                  <ShopPage />
-                </LayoutPage>
-              }
-            />
-            <Route
-              path="/login"
-              element={
-                <LayoutPage>
-                  <LoginPage />
-                </LayoutPage>
-              }
-            />
-          </Routes>
-        </BrowserRouter>
-      </ShopProvider>
-    </ProductProvider>
-  </React.StrictMode>,
+    <CartWishProvider>
+      <ProductProvider>
+        <ShopProvider>
+          <BrowserRouter>
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <LayoutPage>
+                    <App />
+                  </LayoutPage>
+                }
+              />
+              <Route
+                path="/metrics"
+                element={
+                  <LayoutPage>
+                    <MetricsPage />
+                  </LayoutPage>
+                }
+              />
+              <Route
+                path="/cart"
+                element={
+                  <LayoutPage>
+                    <CartPage />
+                  </LayoutPage>
+                }
+              />
+              <Route
+                path="/wishList"
+                element={
+                  <LayoutPage>
+                    <WishListPage />
+                  </LayoutPage>
+                }
+              />
+              <Route
+                path="/shop"
+                element={
+                  <LayoutPage>
+                    <ShopPage />
+                  </LayoutPage>
+                }
+              />
+              <Route
+                path="/login"
+                element={
+                  <LayoutPage>
+                    <LoginPage />
+                  </LayoutPage>
+                }
+              />
+            </Routes>
+          </BrowserRouter>
+        </ShopProvider>
+      </ProductProvider>
+    </CartWishProvider>
+  </React.StrictMode>
 );

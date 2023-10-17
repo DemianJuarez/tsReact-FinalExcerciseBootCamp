@@ -1,5 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
+import { CartWishContext } from "../context/CartWishContext";
+import "./CartPage.css";
 
 export const CartPage = () => {
-  return <div>CartPage</div>;
+  const { cartArray, setWishListArray } = useContext(CartWishContext);
+  return (
+    <>
+      <div className="CartContainer">a</div>
+    </>
+  );
 };
