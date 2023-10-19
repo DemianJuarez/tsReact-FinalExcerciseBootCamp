@@ -1,0 +1,9 @@
+.MetricsPageContainer {
+  background-color: lightgray;
+  width: 100vw;
+  height: calc(100vh - 42px);
+}
+
+.Container {
+  padding: 50px;
+}

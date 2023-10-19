@@ -30,6 +30,8 @@ export const CardRow = (props: CardRowProps) => {
     toggleShowAllProducts,
   } = props;
 
+  console.log(products);
+
   return (
     <>
       {products

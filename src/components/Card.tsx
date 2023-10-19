@@ -13,7 +13,7 @@ export type CardProps = {
 };
 
 function Card(props: CardProps) {
-  const [ products ] = useContext(ProductContext)
+  const [products] = useContext(ProductContext);
   const { rating, productImages, name, price, stock } = props;
   const { setToWishList, cartArray, setToCartList } =
     useContext(CartWishContext);
@@ -22,14 +22,13 @@ function Card(props: CardProps) {
     // Agrega el producto a wishListArray
     const updatedCartArray = [...cartArray];
     const foundProduct = products.find(
-        (product) => product.title === productToAdd.name
-      );
+      (product) => product.title === productToAdd.name
+    );
 
-      if (foundProduct) {
-        updatedCartArray.push(foundProduct);
-        setCartArray(updatedCartArray);
-      }
-    });
+    if (foundProduct) {
+      updatedCartArray.push(foundProduct);
+      setCartArray(updatedCartArray);
+    }
   };
   //usar products find desde aca
 
