@@ -6,16 +6,21 @@ export const CartWishContext = createContext<{
   setCartArray: React.Dispatch<React.SetStateAction<Producto[]>>;
   wishListArray: Producto[];
   setWishListArray: React.Dispatch<React.SetStateAction<Producto[]>>;
+  boughtArray: Producto[];
+  setBoughtArray: React.Dispatch<React.SetStateAction<Producto[]>>;
 }>({
   cartArray: [],
   setCartArray: () => [],
   wishListArray: [],
   setWishListArray: () => [],
+  boughtArray: [],
+  setBoughtArray: () => [],
 });
 
 export const CartWishProvider = ({ children }: { children: ReactNode }) => {
   const [wishListArray, setWishListArray] = useState<Producto[]>([]);
   const [cartArray, setCartArray] = useState<Producto[]>([]);
+  const [boughtArray, setBoughtArray] = useState<Producto[]>([]);
 
   return (
     <CartWishContext.Provider
@@ -24,6 +29,8 @@ export const CartWishProvider = ({ children }: { children: ReactNode }) => {
         setCartArray,
         wishListArray,
         setWishListArray,
+        boughtArray,
+        setBoughtArray,
       }}
     >
       {children}

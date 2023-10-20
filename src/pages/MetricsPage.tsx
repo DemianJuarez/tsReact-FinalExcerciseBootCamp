@@ -11,16 +11,27 @@ import {
   Tooltip,
   XAxis,
   YAxis,
+  PieChart,
+  Pie,
 } from "recharts";
+import { CartWishContext } from "../context/CartWishContext";
+
+type StockCategory = {
+  [key: string]: number;
+};
 
 export const MetricsPage = () => {
   const { products } = useContext(ProductContext);
+  const { boughtArray } = useContext(CartWishContext);
   const [chooseBar, setChooseBar] = useState<string>("fragrances");
   const [arrayBar, setArrayBar] = useState<Producto[]>([]);
   const [labelsBar, setLabelsBar] = useState<string[]>([]);
   const [priceBar, setPriceBar] = useState<number[]>([]);
   const [discountBar, setDiscountBar] = useState<number[]>([]);
   const [discountedPriceBar, setDiscountedPriceBar] = useState<number[]>([]);
+
+  const [arrayPie, setArrayPie] = useState<Producto[]>([]);
+  const [stockCategoryPie, setStockCategoryPie] = useState<StockCategory>({});
 
   const numerator = (
     price: CardProps["price"],
@@ -37,7 +48,29 @@ export const MetricsPage = () => {
     } else {
       setArrayBar(products);
     }
-  }, [chooseBar]);
+  }, [chooseBar, products]);
+
+  useEffect(() => {
+    setArrayPie(products);
+  }, [products, arrayPie]);
+
+  useEffect(() => {
+    const stockCalculado: StockCategory = {};
+    arrayPie.forEach((product) => {
+      const { category, stock } = product;
+      stockCalculado[category] = (stockCalculado[category] || 0) + stock;
+    });
+    setStockCategoryPie(stockCalculado);
+  }, [arrayPie]);
+
+  const transformToChartData = (stockCategoryPie: StockCategory) => {
+    return Object.keys(stockCategoryPie).map((category) => ({
+      name: category,
+      value: stockCategoryPie[category],
+    }));
+  };
+
+  const dataPie = transformToChartData(stockCategoryPie);
 
   useEffect(() => {
     const priceArray = arrayBar.map((e) => e.price);
@@ -52,12 +85,6 @@ export const MetricsPage = () => {
     setDiscountedPriceBar(discountedPriceArray);
   }, [arrayBar]);
 
-  console.log(arrayBar);
-  console.log(labelsBar);
-  console.log(discountBar);
-  console.log(discountedPriceBar);
-  console.log(priceBar);
-
   const combinedArray = labelsBar.map((element, index) => ({
     labels: element,
     discountedPrice: discountedPriceBar[index],
@@ -70,75 +97,110 @@ export const MetricsPage = () => {
     name: e.product,
     discountedPrice: e.discountedPrice,
     price: e.price,
-    discount: e.discount,
+    discountPercent: e.discount,
   }));
-  console.log("🚀 ~ file: MetricsPage.tsx:66 ~ dataBar ~ dataBar:", dataBar);
 
   return (
     <div className="MetricsPageContainer">
       <div className="Container">
-        <BarChart
-          width={1500}
-          height={300}
-          data={dataBar}
-          margin={{
-            top: 20,
-            right: 30,
-            left: 20,
-            bottom: 5,
-          }}
-        >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Bar dataKey="discountedPrice" stackId="a" fill="#8884d8" />
-          <Bar dataKey="price" stackId="" fill="#82ca9d" />
-          <Bar dataKey="discount" fill="#ffc658" />
-        </BarChart>
-        <button
-          onClick={() => {
-            setChooseBar("smartphones");
-          }}
-        >
-          smartphones
-        </button>
-        <button
-          onClick={() => {
-            setChooseBar("laptops");
-          }}
-        >
-          laptops
-        </button>
-        <button
-          onClick={() => {
-            setChooseBar("fragrances");
-          }}
-        >
-          fragrances
-        </button>
-        <button
-          onClick={() => {
-            setChooseBar("skincare");
-          }}
-        >
-          skincare
-        </button>
-        <button
-          onClick={() => {
-            setChooseBar("groceries");
-          }}
-        >
-          groceries
-        </button>
-        <button
-          onClick={() => {
-            setChooseBar("home-decoration");
-          }}
-        >
-          home-decoration
-        </button>
+        <div className="BarContainer">
+          <BarChart
+            width={1200}
+            height={300}
+            data={dataBar}
+            margin={{
+              top: 20,
+              right: 30,
+              left: 20,
+              bottom: 5,
+            }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="name" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Bar dataKey="discountedPrice" stackId="a" fill="#8884d8" />
+            <Bar dataKey="price" stackId="" fill="#82ca9d" />
+            <Bar dataKey="discountPercent" fill="#fc7135" />
+          </BarChart>
+          <div className="buttonsBar">
+            <button
+              className="smartphonesBar"
+              onClick={() => {
+                setChooseBar("smartphones");
+              }}
+            >
+              smartphones
+            </button>
+            <button
+              className="laptopsBar"
+              onClick={() => {
+                setChooseBar("laptops");
+              }}
+            >
+              laptops
+            </button>
+            <button
+              className="fragrancesBar"
+              onClick={() => {
+                setChooseBar("fragrances");
+              }}
+            >
+              fragrances
+            </button>
+            <button
+              className="skincareBar"
+              onClick={() => {
+                setChooseBar("skincare");
+              }}
+            >
+              skincare
+            </button>
+            <button
+              className="groceriesBar"
+              onClick={() => {
+                setChooseBar("groceries");
+              }}
+            >
+              groceries
+            </button>
+            <button
+              className="home-decorationBar"
+              onClick={() => {
+                setChooseBar("home-decoration");
+              }}
+            >
+              home-decoration
+            </button>
+          </div>
+        </div>
+        <div className="secondRow">
+          <div className="PieContainer">
+            <h2>Quantity of Stock</h2>
+            <PieChart width={350} height={350}>
+              <Pie
+                dataKey="value"
+                isAnimationActive={false}
+                data={dataPie}
+                cx="50%"
+                cy="50%"
+                outerRadius={80}
+                fill="#8884d8"
+                label
+              />
+              <Tooltip />
+            </PieChart>
+          </div>
+          <h2>Bought Products: {boughtArray.length}</h2>
+          <div className="boughtContainer">
+            {boughtArray?.map((product, index) => (
+              <div key={index}>
+                <h3>{product.title}</h3>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -13,14 +13,15 @@ export const CartPage = () => {
     return Math.round(priceWithDiscount * 100) / 100;
   };
 
-  const { cartArray } = useContext(CartWishContext);
+  const { cartArray, setBoughtArray, setCartArray } =
+    useContext(CartWishContext);
   return (
     <div className="container">
       <div className="CartPageContainer">
         <h1>Cart</h1>
         <div className="cartContainer">
-          {cartArray.map((product) => (
-            <div className={`${product.title}`} key={product.title}>
+          {cartArray.map((product, index) => (
+            <div className={`${product.title}`} key={index}>
               <Card
                 rating={product.rating}
                 productImages={product.images}
@@ -33,7 +34,14 @@ export const CartPage = () => {
           ))}
         </div>
         <div className="buttonContainer">
-          <button>BUY</button>
+          <button
+            onClick={() => {
+              setBoughtArray(cartArray);
+              setCartArray([]);
+            }}
+          >
+            BUY
+          </button>
         </div>
       </div>
     </div>
