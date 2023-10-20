@@ -26,6 +26,7 @@
 .image {
   height: 115px;
   width: 165px;
+  border-radius: 10px;
 }
 
 .product-rating {

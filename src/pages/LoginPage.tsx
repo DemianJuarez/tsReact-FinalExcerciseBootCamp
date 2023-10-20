@@ -8,4 +8,4 @@ export const LoginPage = () => {
       <Login />
     </div>
   );
-}
+};
