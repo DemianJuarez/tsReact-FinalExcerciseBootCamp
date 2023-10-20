@@ -7,10 +7,6 @@ export const ProductContext = createContext<{
   setImageProfile: React.Dispatch<React.SetStateAction<string>>;
   products: Producto[];
   setProducts: React.Dispatch<React.SetStateAction<Producto[]>>;
-  wishlistArray: Producto[];
-  setWishlistArray: React.Dispatch<React.SetStateAction<Producto[]>>;
-  cartArray: Producto[];
-  setCartArray: React.Dispatch<React.SetStateAction<Producto[]>>;
 }>({
   open: true,
   setOpen: () => {},
@@ -18,10 +14,6 @@ export const ProductContext = createContext<{
   setImageProfile: () => {},
   products: [],
   setProducts: () => {},
-  wishlistArray: [],
-  setWishlistArray: () => {},
-  cartArray: [],
-  setCartArray: () => {},
 });
 
 interface Response {
@@ -49,8 +41,6 @@ export const ProductProvider = ({ children }: { children: ReactNode }) => {
   const [open, setOpen] = useState<boolean>(true);
   const [imageProfile, setImageProfile] = useState<string>("");
   const [products, setProducts] = useState<Producto[]>([]);
-  const [wishlistArray, setWishlistArray] = useState<Producto[]>([]);
-  const [cartArray, setCartArray] = useState<Producto[]>([]);
 
   useEffect(() => {
     const getProducts = async () => {
@@ -71,10 +61,6 @@ export const ProductProvider = ({ children }: { children: ReactNode }) => {
         setImageProfile,
         products,
         setProducts,
-        wishlistArray,
-        setWishlistArray,
-        cartArray,
-        setCartArray,
       }}
     >
       {children}

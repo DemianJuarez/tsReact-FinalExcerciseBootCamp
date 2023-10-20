@@ -12,8 +12,7 @@ function App() {
       </div>
       <div className="featured">
         <h3>Featured Products</h3>
-        <div className="featured-cards">
-        </div>
+        <div className="featured-cards"></div>
       </div>
       <footer className="footer-home">
         <div className="footer-container">

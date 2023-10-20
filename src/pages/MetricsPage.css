@@ -1,0 +1,60 @@
+.MetricsPageContainer {
+  background-color: lightgray;
+  width: 100vw;
+  height: 100%;
+}
+
+.Container {
+  padding: 50px;
+}
+
+.BarContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 30px;
+}
+
+.buttonsBar {
+  display: flex;
+  gap: 20px;
+}
+
+.buttonsBar button {
+  background-color: gray;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.buttonsBar button:hover {
+  background-color: rgba(26, 26, 26, 0.535);
+}
+
+.PieContainer {
+  width: 400px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.secondRow {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.boughtContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: gray;
+  align-items: center;
+  width: 300px;
+  height: 400px;
+  gap: 10px;
+  border-radius: 20px;
+  overflow-y: auto;
+}
