@@ -11,6 +11,7 @@ import { CartPage } from "./pages/CartPage.tsx";
 import { WishListPage } from "./pages/WishListPage.tsx";
 import { ShopPage } from "./pages/ShopPage.tsx";
 import { ShopProvider } from "./context/ShopContext.tsx";
+import { DetailsPage } from "./pages/DetailsPage.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -39,6 +40,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
               element={
                 <LayoutPage>
                   <CartPage />
+                  <DetailsPage />
                 </LayoutPage>
               }
             />
@@ -70,5 +72,5 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         </BrowserRouter>
       </ShopProvider>
     </ProductProvider>
-  </React.StrictMode>,
+  </React.StrictMode>
 );
