@@ -1,10 +1,9 @@
 import { Filter } from "../components/Filter";
 import { ProductContext } from "../context/ProductContext";
 import { ShopContext } from "../context/ShopContext";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import "./ShopPage.css";
 import { CardRow } from "../components/CardRow";
-import { CartWishContext } from "../context/CartWishContext";
 
 export type Category =
   | "smartphones"
@@ -28,14 +27,6 @@ export type CategoryState = Record<Category, boolean>;
 export const ShopPage = () => {
   const { products } = useContext(ProductContext);
   const { filter } = useContext(ShopContext);
-  const {
-    toCartList,
-    toWishList,
-    cartArray,
-    wishListArray,
-    setCartArray,
-    setWishListArray,
-  } = useContext(CartWishContext);
   const [showAllProducts, setShowAllProducts] = useState<CategoryState>({
     smartphones: false,
     laptops: false,
@@ -52,26 +43,6 @@ export const ShopPage = () => {
       [category]: !prev[category],
     }));
   };
-
-  useEffect(() => {
-    if (toCartList.length > 0) {
-      const updatedCartArray = [...cartArray];
-
-      toCartList.forEach((productToAdd) => {
-        // Busca el producto en products por nombre
-        const foundProduct = products.find(
-          (product) => product.title === productToAdd.name
-        );
-
-        if (foundProduct) {
-          updatedCartArray.push(foundProduct);
-          setCartArray(updatedCartArray);
-        }
-      });
-    }
-  }, [toCartList, toWishList]);
-
-  console.log(cartArray);
 
   return (
     <div className="shopPageContainer">

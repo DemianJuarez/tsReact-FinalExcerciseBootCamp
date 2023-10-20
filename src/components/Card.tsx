@@ -2,6 +2,8 @@ import "./Card.css";
 import { Button } from "./Button";
 import { useContext } from "react";
 import { CartWishContext } from "../context/CartWishContext";
+import { ProductContext } from "../context/ProductContext";
+import { useLocation } from "react-router-dom";
 
 export type CardProps = {
   rating: number;
@@ -13,29 +15,32 @@ export type CardProps = {
 };
 
 function Card(props: CardProps) {
-  const [ products ] = useContext(ProductContext)
+  const { products } = useContext(ProductContext);
   const { rating, productImages, name, price, stock } = props;
-  const { setToWishList, cartArray, setToCartList } =
+  const { wishListArray, cartArray, setWishListArray, setCartArray } =
     useContext(CartWishContext);
 
-  const addToWishlist = () => {
-    // Agrega el producto a wishListArray
-    const updatedCartArray = [...cartArray];
-    const foundProduct = products.find(
-        (product) => product.title === productToAdd.name
-      );
+  const location = useLocation();
+  const { pathname } = location;
 
-      if (foundProduct) {
-        updatedCartArray.push(foundProduct);
-        setCartArray(updatedCartArray);
-      }
-    });
+  const addToWishlist = () => {
+    const updatedWishArray = [...wishListArray];
+    const foundProduct = products.find((product) => product.title === name);
+
+    if (foundProduct) {
+      updatedWishArray.push(foundProduct);
+      setWishListArray(updatedWishArray);
+    }
   };
-  //usar products find desde aca
 
   const addToCart = () => {
-    // Agrega el producto a cartArray
-    setToCartList((prevToCartList) => [...prevToCartList, props]);
+    const updatedCartArray = [...cartArray];
+    const foundProduct = products.find((product) => product.title === name);
+
+    if (foundProduct) {
+      updatedCartArray.push(foundProduct);
+      setCartArray(updatedCartArray);
+    }
   };
 
   return (
@@ -47,13 +52,17 @@ function Card(props: CardProps) {
         </div>
       </div>
       <div className="product-description">
-        <p className="product-name">{name}</p>
-        <p className="product-price">{price}</p>
-        <p className="product-stock">{stock}</p>
+        <p className="product-name">Name: {name}</p>
+        <p className="product-price">Price: {price}</p>
+        <p className="product-stock">Stock: {stock}</p>
       </div>
       <div className="buttons-div">
-        <Button text="Whishlist" onClick={addToWishlist} />
-        <Button text="Cart" onClick={addToCart} />
+        {pathname === "/shop" && (
+          <>
+            <Button text="Whishlist" onClick={addToWishlist} />
+            <Button text="Cart" onClick={addToCart} />
+          </>
+        )}
       </div>
     </div>
   );
