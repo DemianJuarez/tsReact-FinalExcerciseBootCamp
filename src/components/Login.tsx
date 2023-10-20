@@ -1,5 +1,28 @@
+import { useState } from "react";
+
 import "./Login.css";
+
 export const Login = () => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+
+  const handleLogin = () => {
+    fetch('https://dummyjson.com/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        username,
+        password,
+      })
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+      });
+
+  };
+
   return (
     <div className="container-login">
       <div>
@@ -15,15 +38,27 @@ export const Login = () => {
         </div>
         <div className="inputs-container">
           <div className="input1">
-            <p>Username</p> <input className="inputs"></input>
+            <p>Username</p>
+            <input
+              className="inputs"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
           </div>
           <div className="input2">
             <span>Password</span>
-            <input className="inputs" type="password"></input>
+            <input
+              className="inputs"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
           </div>
         </div>
         <div className="button-container">
-          <button className="login-button"> Login </button>
+          <button className="login-button" onClick={handleLogin}>
+            Login
+          </button>
         </div>
       </div>
     </div>

@@ -10,7 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+<<<<<<< HEAD
     "@popperjs/core": "^2.11.8",
+=======
+    "chart.js": "^4.4.0",
+>>>>>>> 1a36cad92f739b25bfc2db8e920a56661fa66666
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
     "react": "^18.2.0",
