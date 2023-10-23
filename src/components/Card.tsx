@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { CartWishContext } from "../context/CartWishContext";
 import { ProductContext } from "../context/ProductContext";
 import { useLocation } from "react-router-dom";
+import { saveToLocalStorage } from "../utilsStorage";
 
 export type CardProps = {
   rating: number;
@@ -31,6 +32,8 @@ function Card(props: CardProps) {
       updatedWishArray.push(foundProduct);
       setWishListArray(updatedWishArray);
     }
+
+    saveToLocalStorage("wishList", updatedWishArray);
   };
 
   const addToCart = () => {
@@ -41,6 +44,8 @@ function Card(props: CardProps) {
       updatedCartArray.push(foundProduct);
       setCartArray(updatedCartArray);
     }
+
+    saveToLocalStorage("cartList", updatedCartArray);
   };
 
   return (

@@ -4,6 +4,7 @@ import { CartWishContext } from "../context/CartWishContext";
 import { ProductContext, Producto } from "../context/ProductContext";
 import "./WishListPage.css";
 import { ShopContext } from "../context/ShopContext";
+import { saveToLocalStorage } from "../utilsStorage";
 
 export const WishListPage = () => {
   const { wishListArray, cartArray, setCartArray, setWishListArray } =
@@ -32,17 +33,25 @@ export const WishListPage = () => {
   };
 
   const addToCart = (id: number) => {
-    const updatedCartArray = [...cartArray];
     const foundProduct = products.find((product) => product.id === id);
 
     if (foundProduct) {
-      updatedCartArray.push(foundProduct);
+      const updatedCartArray = [...cartArray, foundProduct];
       setCartArray(updatedCartArray);
+
+      const wishProductIndex = wishListArray.findIndex(
+        (product) => product.id === id
+      );
+
+      if (wishProductIndex !== -1) {
+        const updatedWishArray = [...wishListArray];
+        updatedWishArray.splice(wishProductIndex, 1);
+        setWishListArray(updatedWishArray);
+        saveToLocalStorage("wishList", updatedWishArray);
+      }
     }
-    deleteProduct(id);
   };
 
-  wishListArray;
   console.log("lolg", wishListArray);
 
   return (
@@ -98,7 +107,9 @@ export const WishListPage = () => {
                       Delete
                     </button>
                     <button
-                      onClick={() => addToCart(product.id)}
+                      onClick={() => {
+                        addToCart(product.id);
+                      }}
                       className="cartButton"
                     >
                       Cart
@@ -112,26 +123,3 @@ export const WishListPage = () => {
     </div>
   );
 };
-
-/*{products
-        .filter((e) => e.category === category)
-        .filter((e) => e.price >= min && e.price <= max)
-        .filter(
-          (e) =>
-            e.title.toLowerCase().includes(input.toLowerCase()) ||
-            e.brand.toLowerCase().includes(input.toLowerCase()) ||
-            e.description.toLowerCase().includes(input.toLowerCase())
-        )
-        .slice(0, showAllProducts[category] ? undefined : defaultProductsCount)
-        .map((e) => (
-          <div className="product" key={e.title}>
-            <Card
-              rating={e.rating}
-              productImages={e.images}
-              name={e.title}
-              price={numerator(e.price, e.discountPercentage)}
-              discountPercentage={e.discountPercentage}
-              stock={e.stock}
-            />
-          </div>
-        ))} */
