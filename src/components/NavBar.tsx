@@ -3,6 +3,19 @@ import "./NavBar.css";
 import { Link } from "react-router-dom";
 import { ProductContext } from "../context/ProductContext";
 import { useLocation } from "react-router-dom";
+import { DropdownMenu } from "./DropdownMenu.tsx";
+import { ShopPage } from "../pages/ShopPage.tsx";
+
+
+
+const options: Option[] = [
+  { value: '/metrics', label: 'Metrics' },
+  { value: '/cart', label: 'Cart' },
+  { value: '/wishlist', label: 'WishList' },
+  { value: '/shop', label: 'Shop' }
+];
+
+
 
 export const NavBar = () => {
   const { open, imageProfile } = useContext(ProductContext);
@@ -11,6 +24,7 @@ export const NavBar = () => {
   console.log(pathname);
   const splitLocation = pathname.split("/");
 
+
   return (
     <>
       <nav className="nav-container">
@@ -18,7 +32,7 @@ export const NavBar = () => {
           <Link to="/" className="gm2-nav">
             <img className="image-gm2-nav" src="gm2-image.png" />
           </Link>
-          <Link to="/" className="title-nav">
+          <Link to="/shop" className="title-nav">
             <h2>The best ecommerce ever</h2>
           </Link>
         </div>
@@ -75,6 +89,19 @@ export const NavBar = () => {
             />
           </Link>
         </div>
+      </nav>
+      <nav className="nav-container-responsive">
+        <Link to="/" className="gm2-nav-responsive">
+          <div className="left-side-nav-responsive">
+            <img className="image-gm2-nav-responsive" src="https://assets-global.website-files.com/640b80e04481e4775cf8acf3/640f86525f5dd28fe68b82b9_GM2%20logo%20White-%20Small.svg" />
+          </div>
+        </Link>
+        <div className="right-side-nav-responsive">
+          <div className="dropdown">
+            <DropdownMenu options={options} />
+          </div>
+        </div>
+
       </nav>
     </>
   );

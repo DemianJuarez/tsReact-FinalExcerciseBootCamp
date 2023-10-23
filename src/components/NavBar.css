@@ -35,10 +35,23 @@
   height: 28px;
 }
 
+
+.gm2-nav-responsive {
+  display: flex;
+  align-items: center;
+}
+
+
 .title-nav {
   text-decoration: none;
   color: whitesmoke;
 }
+
+.title-nav-responsive {
+  display: flex;
+  align-items: center;
+}
+
 
 .metrics-nav {
   text-decoration: none;
@@ -97,4 +110,74 @@
   background-color: whitesmoke;
   color: black;
   border-radius: 1rem;
+}
+
+
+.nav-container-responsive {
+  box-sizing: border-box;
+  display: none;
+  align-items: center;
+}
+
+.left-side-nav-responsive {
+  display: flex;
+}
+
+
+
+.menu-image {
+  height: 35px;
+}
+
+
+.gm2-nav-responsive {
+  padding-left: 10px;
+}
+
+
+.dropdown-toggle {
+  position: fixed;
+  left: 89%;
+  top: 2px;
+}
+
+
+.dropdown-list {
+  position: fixed;
+  left: 85%;
+  top: 4%;
+  display: flex;
+  flex-direction: column;
+  background-color: blue;
+  gap: 10px;
+  padding-top: 5px;
+  padding-left: 5px;
+  padding-bottom: 5px;
+  border-radius: 10px;
+}
+
+.dropdown-list li a {
+  color: white
+}
+
+
+
+@media only screen and (max-device-width: 480px) {
+  .nav-container {
+    display: none;
+  }
+
+  .nav-container-responsive {
+    position: fixed;
+    width: 100vw;
+    height: 40px;
+    background-color: blue;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .home {
+    padding-top: 40px;
+  }
+
 }
