@@ -38,47 +38,47 @@
   padding: 3px;
 
 
-.input1 {
-  color: #d9d9d9;
-  display: flex;
-  height: 1vh;
-  align-items: center;
-  gap: 5px;
-  font-size: large;
-  font-weight: bold;
-}
+  .input1 {
+    color: #d9d9d9;
+    display: flex;
+    height: 1vh;
+    align-items: center;
+    gap: 5px;
+    font-size: large;
+    font-weight: bold;
+  }
 
-.input2 {
-  display: flex;
-  gap: 6px;
-  color: #d9d9d9;
-  font-size: large;
-  font-weight: bold;
-  gap: 9px;
-}
+  .input2 {
+    display: flex;
+    gap: 6px;
+    color: #d9d9d9;
+    font-size: large;
+    font-weight: bold;
+    gap: 9px;
+  }
 
-.login-body {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
+  .login-body {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
 
-.imagen-login {
-  width: 30vh;
-  height: 30vh;
-  border-radius: 10px;
-}
+  .imagen-login {
+    width: 30vh;
+    height: 30vh;
+    border-radius: 10px;
+  }
 
-.button-container {
-  display: flex;
-  justify-content: end;
-}
+  .button-container {
+    display: flex;
+    justify-content: end;
+  }
 
-.login-button {
-  width: 12vh;
-  height: 4vh;
-  font-weight: bold;
-  border-radius: 2vh;
-  border: 0px;
-  background-color: #d9d9d9;
-}
+  .login-button {
+    width: 12vh;
+    height: 4vh;
+    font-weight: bold;
+    border-radius: 2vh;
+    border: 0px;
+    background-color: #d9d9d9;
+  }

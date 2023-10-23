@@ -2,10 +2,10 @@ import { useState } from "react";
 
 import "./Login.css";
 
+
 export const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
 
   const handleLogin = () => {
     fetch('https://dummyjson.com/auth/login', {
@@ -16,11 +16,20 @@ export const Login = () => {
         password,
       })
     })
-      .then(response => response.json())
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("Login failed. Please check your credentials.");
+        }
+      })
       .then(data => {
-        console.log(data);
+        localStorage.setItem('sessionData', JSON.stringify(data));
+        console.log("Login successful.");
+      })
+      .catch(error => {
+        console.error(error.message);
       });
-
   };
 
   return (
