@@ -18,6 +18,8 @@ const options: Option[] = [
 
 
 export const NavBar = () => {
+  var session = localStorage.getItem("sessionData");
+
   const { open, imageProfile } = useContext(ProductContext);
   const location = useLocation();
   const { pathname } = location;
@@ -37,7 +39,7 @@ export const NavBar = () => {
           </Link>
         </div>
         <div className="right-side-nav">
-          {open && (
+          {session && (
             <>
               <Link
                 to="/metrics"
