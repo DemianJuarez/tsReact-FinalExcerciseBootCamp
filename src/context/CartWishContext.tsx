@@ -1,5 +1,6 @@
-import { ReactNode, createContext, useState } from "react";
+import { ReactNode, createContext, useEffect, useState } from "react";
 import { Producto } from "./ProductContext";
+import { saveToLocalStorage, loadFromLocalStorage } from "../utilsStorage";
 
 export const CartWishContext = createContext<{
   cartArray: Producto[];
@@ -18,9 +19,21 @@ export const CartWishContext = createContext<{
 });
 
 export const CartWishProvider = ({ children }: { children: ReactNode }) => {
-  const [wishListArray, setWishListArray] = useState<Producto[]>([]);
-  const [cartArray, setCartArray] = useState<Producto[]>([]);
-  const [boughtArray, setBoughtArray] = useState<Producto[]>([]);
+  const [wishListArray, setWishListArray] = useState<Producto[]>(
+    loadFromLocalStorage("wishList") || []
+  );
+  const [cartArray, setCartArray] = useState<Producto[]>(
+    loadFromLocalStorage("cartList") || []
+  );
+  const [boughtArray, setBoughtArray] = useState<Producto[]>([
+    loadFromLocalStorage("boughtList") || [],
+  ]);
+
+  useEffect(() => {
+    saveToLocalStorage("wishList", wishListArray);
+    saveToLocalStorage("cartList", cartArray);
+    saveToLocalStorage("boughtList", boughtArray);
+  }, [wishListArray, cartArray, boughtArray]);
 
   return (
     <CartWishContext.Provider

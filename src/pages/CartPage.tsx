@@ -3,6 +3,7 @@ import { CartWishContext } from "../context/CartWishContext";
 import "./CartPage.css";
 import { Card } from "../components/Card";
 import { Producto } from "../context/ProductContext";
+import { saveToLocalStorage } from "../utilsStorage";
 
 export const CartPage = () => {
   const numerator = (
@@ -36,8 +37,13 @@ export const CartPage = () => {
         <div className="buttonContainer">
           <button
             onClick={() => {
-              setBoughtArray(cartArray);
+              setBoughtArray((prevBoughtArray) => [
+                ...prevBoughtArray,
+                ...cartArray,
+              ]);
+              saveToLocalStorage("cartList", cartArray);
               setCartArray([]);
+              localStorage.removeItem("cartList");
             }}
           >
             BUY

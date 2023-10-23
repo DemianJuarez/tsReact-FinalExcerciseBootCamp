@@ -3,12 +3,15 @@ import { Filter } from "../components/Filter";
 import { CartWishContext } from "../context/CartWishContext";
 import { ProductContext, Producto } from "../context/ProductContext";
 import "./WishListPage.css";
+import { ShopContext } from "../context/ShopContext";
+import { saveToLocalStorage } from "../utilsStorage";
 
 export const WishListPage = () => {
   const { wishListArray, cartArray, setCartArray, setWishListArray } =
     useContext(CartWishContext);
 
   const { products } = useContext(ProductContext);
+  const { filter, min, max, input } = useContext(ShopContext);
 
   const numerator = (
     price: Producto["price"],
@@ -30,15 +33,26 @@ export const WishListPage = () => {
   };
 
   const addToCart = (id: number) => {
-    const updatedCartArray = [...cartArray];
     const foundProduct = products.find((product) => product.id === id);
 
     if (foundProduct) {
-      updatedCartArray.push(foundProduct);
+      const updatedCartArray = [...cartArray, foundProduct];
       setCartArray(updatedCartArray);
+
+      const wishProductIndex = wishListArray.findIndex(
+        (product) => product.id === id
+      );
+
+      if (wishProductIndex !== -1) {
+        const updatedWishArray = [...wishListArray];
+        updatedWishArray.splice(wishProductIndex, 1);
+        setWishListArray(updatedWishArray);
+        saveToLocalStorage("wishList", updatedWishArray);
+      }
     }
-    deleteProduct(id);
   };
+
+  console.log("lolg", wishListArray);
 
   return (
     <div className="WishListContainer">
@@ -56,42 +70,53 @@ export const WishListPage = () => {
             <div className="cell6">Actions</div>
           </div>
           <div className="productContainer">
-            {wishListArray.map((product) => (
-              <div className="row" key={product.id}>
-                <div className="cell1">{product.category}</div>
-                <div className="cell2">{product.title}</div>
-                <div className="cell3">{product.brand}</div>
-                <div className="cell4">
-                  {numerator(product.price, product.discountPercentage)}
-                </div>
-                <div className="cell5 cellImagenes">
-                  {product.images.map((image, index) => (
-                    <a
-                      key={image}
-                      href={image}
-                      target="_blank"
-                      rel="noopener noreferrer"
+            {wishListArray
+              .filter((e) => filter === "all" || e.category === filter)
+              .filter((e) => e.price >= min && e.price <= max)
+              .filter(
+                (e) =>
+                  e.title.toLowerCase().includes(input.toLowerCase()) ||
+                  e.brand.toLowerCase().includes(input.toLowerCase()) ||
+                  e.description.toLowerCase().includes(input.toLowerCase())
+              )
+              .map((product, index) => (
+                <div className="row" key={index}>
+                  <div className="cell1">{product.category}</div>
+                  <div className="cell2">{product.title}</div>
+                  <div className="cell3">{product.brand}</div>
+                  <div className="cell4">
+                    {numerator(product.price, product.discountPercentage)}
+                  </div>
+                  <div className="cell5 cellImagenes">
+                    {product.images.map((image, index) => (
+                      <a
+                        key={image}
+                        href={image}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Link_to_image_{index + 1}
+                      </a>
+                    ))}
+                  </div>
+                  <div className="cell6 actions">
+                    <button
+                      onClick={() => deleteProduct(product.id)}
+                      className="deleteButton"
                     >
-                      Link_to_image_{index + 1}
-                    </a>
-                  ))}
+                      Delete
+                    </button>
+                    <button
+                      onClick={() => {
+                        addToCart(product.id);
+                      }}
+                      className="cartButton"
+                    >
+                      Cart
+                    </button>
+                  </div>
                 </div>
-                <div className="cell6 actions">
-                  <button
-                    onClick={() => deleteProduct(product.id)}
-                    className="deleteButton"
-                  >
-                    Delete
-                  </button>
-                  <button
-                    onClick={() => addToCart(product.id)}
-                    className="cartButton"
-                  >
-                    Cart
-                  </button>
-                </div>
-              </div>
-            ))}
+              ))}
           </div>
         </div>
       </div>
