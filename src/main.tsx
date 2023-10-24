@@ -13,6 +13,7 @@ import { ShopPage } from "./pages/ShopPage.tsx";
 import { ShopProvider } from "./context/ShopContext.tsx";
 import { CartWishProvider } from "./context/CartWishContext.tsx";
 import { DetailsPage } from "./pages/DetailsPage.tsx";
+import { ProfilePage } from "./pages/ProfilePage.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -67,6 +68,14 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
                 element={
                   <LayoutPage>
                     <LoginPage />
+                  </LayoutPage>
+                }
+              />
+              <Route
+                path="/profile"
+                element={
+                  <LayoutPage>
+                    <ProfilePage />
                   </LayoutPage>
                 }
               />

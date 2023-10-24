@@ -95,6 +95,19 @@
   color: #797777;
 }
 
+
+.button-div {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 1vw;
+}
+
+
+.logout-button {
+  width: 5vw;
+}
+
+
 .user-available-items {
   box-sizing: border-box;
   height: 80vh;

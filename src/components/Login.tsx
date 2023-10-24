@@ -26,6 +26,7 @@ export const Login = () => {
       .then(data => {
         localStorage.setItem('sessionData', JSON.stringify(data));
         console.log("Login successful.");
+        window.location.href = "/profile";
       })
       .catch(error => {
         console.error(error.message);
