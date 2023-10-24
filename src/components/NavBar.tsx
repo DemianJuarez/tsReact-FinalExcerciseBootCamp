@@ -19,7 +19,6 @@ export const NavBar = () => {
   const { imageProfile } = useContext(ProductContext);
   const location = useLocation();
   const { pathname } = location;
-  console.log(pathname);
   const splitLocation = pathname.split("/");
 
   return (

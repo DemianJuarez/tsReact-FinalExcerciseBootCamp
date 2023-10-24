@@ -3,7 +3,7 @@ import { Button } from "./Button";
 import { useContext } from "react";
 import { CartWishContext } from "../context/CartWishContext";
 import { ProductContext } from "../context/ProductContext";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { saveToLocalStorage } from "../utilsStorage";
 
 export type CardProps = {
@@ -11,13 +11,14 @@ export type CardProps = {
   productImages: string[];
   name: string;
   price: number;
+  id: number;
   discountPercentage: number;
   stock: number;
 };
 
 function Card(props: CardProps) {
   const { products } = useContext(ProductContext);
-  const { rating, productImages, name, price, stock } = props;
+  const { rating, productImages, name, price, stock, id } = props;
   const { wishListArray, cartArray, setWishListArray, setCartArray } =
     useContext(CartWishContext);
 
@@ -57,7 +58,9 @@ function Card(props: CardProps) {
         </div>
       </div>
       <div className="product-description">
-        <p className="product-name">Name: {name}</p>
+        <Link className="product-name" to={`/product/:${id}`}>
+          <p className="product-name">Name: {name}</p>
+        </Link>
         <p className="product-price">Price: {price}</p>
         <p className="product-stock">Stock: {stock}</p>
       </div>

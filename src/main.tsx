@@ -79,6 +79,14 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
                   </LayoutPage>
                 }
               />
+              <Route
+                path="/product/:id"
+                element={
+                  <LayoutPage>
+                    <DetailsPage />
+                  </LayoutPage>
+                }
+              />
             </Routes>
           </BrowserRouter>
         </ShopProvider>

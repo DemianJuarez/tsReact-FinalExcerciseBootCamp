@@ -4,6 +4,7 @@ import { Category, CategoryState } from "../pages/ShopPage";
 import { Card } from "./Card";
 import { ShopContext } from "../context/ShopContext";
 import { numerator } from "../utils";
+import { Link } from "react-router-dom";
 
 type CardRowProps = {
   products: Producto[];
@@ -22,8 +23,6 @@ export const CardRow = (props: CardRowProps) => {
     defaultProductsCount,
     toggleShowAllProducts,
   } = props;
-
-  console.log(products);
 
   return (
     <>
@@ -46,6 +45,7 @@ export const CardRow = (props: CardRowProps) => {
               price={numerator(e.price, e.discountPercentage)}
               discountPercentage={e.discountPercentage}
               stock={e.stock}
+              id={e.id}
             />
           </div>
         ))}

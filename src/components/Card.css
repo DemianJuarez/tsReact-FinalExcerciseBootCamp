@@ -56,6 +56,11 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  color: white;
+}
+
+.product-name:hover {
+  color: black;
 }
 
 .buttons-div {
