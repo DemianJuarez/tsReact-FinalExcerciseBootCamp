@@ -1,8 +1,9 @@
 import { useContext } from "react";
 import { Producto } from "../context/ProductContext";
 import { Category, CategoryState } from "../pages/ShopPage";
-import { Card, CardProps } from "./Card";
+import { Card } from "./Card";
 import { ShopContext } from "../context/ShopContext";
+import { numerator } from "../utils";
 
 type CardRowProps = {
   products: Producto[];
@@ -10,14 +11,6 @@ type CardRowProps = {
   showAllProducts: CategoryState;
   defaultProductsCount: 3;
   toggleShowAllProducts: (category: Category) => void;
-};
-
-const numerator = (
-  price: CardProps["price"],
-  discountPercentage: CardProps["discountPercentage"]
-) => {
-  const priceWithDiscount = price * (1 - discountPercentage / 100);
-  return Math.round(priceWithDiscount * 100) / 100;
 };
 
 export const CardRow = (props: CardRowProps) => {

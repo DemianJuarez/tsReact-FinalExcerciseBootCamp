@@ -25,9 +25,9 @@ export const CartWishProvider = ({ children }: { children: ReactNode }) => {
   const [cartArray, setCartArray] = useState<Producto[]>(
     loadFromLocalStorage("cartList") || []
   );
-  const [boughtArray, setBoughtArray] = useState<Producto[]>([
-    loadFromLocalStorage("boughtList") || [],
-  ]);
+  const [boughtArray, setBoughtArray] = useState<Producto[]>(
+    loadFromLocalStorage("boughtList") || []
+  );
 
   useEffect(() => {
     saveToLocalStorage("wishList", wishListArray);

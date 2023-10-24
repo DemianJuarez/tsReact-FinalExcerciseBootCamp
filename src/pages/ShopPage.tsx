@@ -4,6 +4,7 @@ import { ShopContext } from "../context/ShopContext";
 import { useContext, useState } from "react";
 import "./ShopPage.css";
 import { CardRow } from "../components/CardRow";
+import { Navigate } from "react-router-dom";
 
 export type Category =
   | "smartphones"
