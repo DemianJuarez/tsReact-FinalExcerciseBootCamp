@@ -1,8 +1,13 @@
 import React from "react";
 import "./DetailsPage.css";
+import { Navigate } from "react-router-dom";
 
 export const DetailsPage = () => {
-  return (
+  const session = localStorage.getItem("sessionData");
+
+  return session === null ? (
+    <Navigate to="/login" />
+  ) : (
     <div className="principal-container">
       <h1>Product Detail</h1>
       <div className="secondary-container">

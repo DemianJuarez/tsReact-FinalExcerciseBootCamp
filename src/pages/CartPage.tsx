@@ -2,21 +2,19 @@ import { useContext } from "react";
 import { CartWishContext } from "../context/CartWishContext";
 import "./CartPage.css";
 import { Card } from "../components/Card";
-import { Producto } from "../context/ProductContext";
 import { saveToLocalStorage } from "../utilsStorage";
+import { numerator } from "../utils";
+import { Navigate } from "react-router-dom";
 
 export const CartPage = () => {
-  const numerator = (
-    price: Producto["price"],
-    discountPercentage: Producto["discountPercentage"]
-  ) => {
-    const priceWithDiscount = price * (1 - discountPercentage / 100);
-    return Math.round(priceWithDiscount * 100) / 100;
-  };
-
-  const { cartArray, setBoughtArray, setCartArray } =
+  const { cartArray, setBoughtArray, setCartArray, boughtArray } =
     useContext(CartWishContext);
-  return (
+
+  const session = localStorage.getItem("sessionData");
+
+  return session === null ? (
+    <Navigate to="/login" />
+  ) : (
     <div className="container">
       <div className="CartPageContainer">
         <h1>Cart</h1>
@@ -37,11 +35,10 @@ export const CartPage = () => {
         <div className="buttonContainer">
           <button
             onClick={() => {
-              setBoughtArray((prevBoughtArray) => [
-                ...prevBoughtArray,
-                ...cartArray,
-              ]);
-              saveToLocalStorage("cartList", cartArray);
+              const updatedBoughtArray = [...boughtArray, ...cartArray];
+              setBoughtArray(updatedBoughtArray);
+              saveToLocalStorage("boughtList", updatedBoughtArray);
+
               setCartArray([]);
               localStorage.removeItem("cartList");
             }}

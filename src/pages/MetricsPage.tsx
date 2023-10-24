@@ -2,7 +2,6 @@ import "./MetricsPage.css";
 
 import { useContext, useEffect, useState } from "react";
 import { ProductContext, Producto } from "../context/ProductContext";
-import { CardProps } from "../components/Card";
 import {
   Bar,
   BarChart,
@@ -15,6 +14,8 @@ import {
   Pie,
 } from "recharts";
 import { CartWishContext } from "../context/CartWishContext";
+import { numerator } from "../utils";
+import { Navigate } from "react-router-dom";
 
 type StockCategory = {
   [key: string]: number;
@@ -32,14 +33,6 @@ export const MetricsPage = () => {
 
   const [arrayPie, setArrayPie] = useState<Producto[]>([]);
   const [stockCategoryPie, setStockCategoryPie] = useState<StockCategory>({});
-
-  const numerator = (
-    price: CardProps["price"],
-    discountPercentage: CardProps["discountPercentage"]
-  ) => {
-    const priceWithDiscount = price * (1 - discountPercentage / 100);
-    return Math.round(priceWithDiscount * 100) / 100;
-  };
 
   useEffect(() => {
     if (chooseBar !== "") {
@@ -99,8 +92,11 @@ export const MetricsPage = () => {
     price: e.price,
     discountPercent: e.discount,
   }));
+  const session = localStorage.getItem("sessionData");
 
-  return (
+  return session === null ? (
+    <Navigate to="/login" />
+  ) : (
     <div className="MetricsPageContainer">
       <div className="Container">
         <div className="BarContainer">

@@ -1,10 +1,12 @@
 import { useContext } from "react";
 import { Filter } from "../components/Filter";
 import { CartWishContext } from "../context/CartWishContext";
-import { ProductContext, Producto } from "../context/ProductContext";
+import { ProductContext } from "../context/ProductContext";
 import "./WishListPage.css";
 import { ShopContext } from "../context/ShopContext";
 import { saveToLocalStorage } from "../utilsStorage";
+import { numerator } from "../utils";
+import { Navigate } from "react-router-dom";
 
 export const WishListPage = () => {
   const { wishListArray, cartArray, setCartArray, setWishListArray } =
@@ -12,14 +14,6 @@ export const WishListPage = () => {
 
   const { products } = useContext(ProductContext);
   const { filter, min, max, input } = useContext(ShopContext);
-
-  const numerator = (
-    price: Producto["price"],
-    discountPercentage: Producto["discountPercentage"]
-  ) => {
-    const priceWithDiscount = price * (1 - discountPercentage / 100);
-    return Math.round(priceWithDiscount * 100) / 100;
-  };
 
   const deleteProduct = (productId: number) => {
     const productIndex = wishListArray.findIndex(
@@ -52,9 +46,11 @@ export const WishListPage = () => {
     }
   };
 
-  console.log("lolg", wishListArray);
+  const session = localStorage.getItem("sessionData");
 
-  return (
+  return session === null ? (
+    <Navigate to="/login" />
+  ) : (
     <div className="WishListContainer">
       <div className="filter">
         <Filter />
