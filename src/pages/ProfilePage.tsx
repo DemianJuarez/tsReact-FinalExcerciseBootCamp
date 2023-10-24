@@ -1,6 +1,15 @@
 import "./ProfilePage.css";
 
 export const ProfilePage = () => {
+
+
+  const handlelogout = () => {
+    localStorage.removeItem("sessionData");
+    window.location.href = "/login";
+
+
+  }
+
   return (
     <section className="profile-container">
       <div className="megadiv">
@@ -35,6 +44,9 @@ export const ProfilePage = () => {
               <p className="address">8374 anashe</p>
             </div>
           </div>
+        </div>
+        <div className="button-div">
+        <button className="logout-button" onClick={handlelogout}>logout</button>
         </div>
       </div>
       <div className="user-available-items">
