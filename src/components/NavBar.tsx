@@ -8,16 +8,12 @@ import { ShopPage } from "../pages/ShopPage.tsx";
 import { isObject } from "chart.js/helpers";
 
 
-
-
 const options: Option[] = [
-  { value: '/metrics', label: 'Metrics' },
-  { value: '/cart', label: 'Cart' },
-  { value: '/wishlist', label: 'WishList' },
-  { value: '/shop', label: 'Shop' }
+  { value: "/metrics", label: "Metrics" },
+  { value: "/cart", label: "Cart" },
+  { value: "/wishlist", label: "WishList" },
+  { value: "/shop", label: "Shop" },
 ];
-
-
 
 export const NavBar = () => {
   var session = localStorage.getItem("sessionData");
@@ -35,6 +31,7 @@ export const NavBar = () => {
     var shoplink = "/login";
     console.log("else login");
   };
+
 
   return (
     <>
@@ -106,7 +103,10 @@ export const NavBar = () => {
       <nav className="nav-container-responsive">
         <Link to="/" className="gm2-nav-responsive">
           <div className="left-side-nav-responsive">
-            <img className="image-gm2-nav-responsive" src="https://assets-global.website-files.com/640b80e04481e4775cf8acf3/640f86525f5dd28fe68b82b9_GM2%20logo%20White-%20Small.svg" />
+            <img
+              className="image-gm2-nav-responsive"
+              src="https://assets-global.website-files.com/640b80e04481e4775cf8acf3/640f86525f5dd28fe68b82b9_GM2%20logo%20White-%20Small.svg"
+            />
           </div>
         </Link>
         <div className="right-side-nav-responsive">
@@ -114,7 +114,6 @@ export const NavBar = () => {
             <DropdownMenu options={options} />
           </div>
         </div>
-
       </nav>
     </>
   );

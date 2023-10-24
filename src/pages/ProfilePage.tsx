@@ -1,10 +1,9 @@
 import "./ProfilePage.css";
 import { useEffect, useState, useContext } from "react";
 import { CartWishContext } from "../context/CartWishContext";
+import { Navigate } from "react-router-dom";
 
-  
 export const ProfilePage = () => {
-
   const { boughtArray } = useContext(CartWishContext);
 
   const [userData, setUserData] = useState<{
@@ -17,9 +16,8 @@ export const ProfilePage = () => {
     image: string;
   } | null>(null);
 
-
   useEffect(() => {
-    const sessionData = localStorage.getItem('sessionData');
+    const sessionData = localStorage.getItem("sessionData");
     if (sessionData) {
       const userData = JSON.parse(sessionData);
       setUserData(userData);
@@ -29,18 +27,17 @@ export const ProfilePage = () => {
   const handlelogout = () => {
     localStorage.removeItem("sessionData");
     window.location.href = "/login";
+  };
 
+  const session = localStorage.getItem("sessionData");
 
-  }
-
-  return (
+  return session === null ? (
+    <Navigate to="/login" />
+  ) : (
     <section className="profile-container">
       <div className="megadiv">
         <div className="user-profile-image">
-          <img
-            src= {userData?.image}
-            alt="user image profile"
-          />
+          <img src={userData?.image} alt="user image profile" />
         </div>
         <div className="user-name-div">
           <p className="user-name">{userData?.username}</p>
@@ -69,7 +66,9 @@ export const ProfilePage = () => {
           </div>
         </div>
         <div className="button-div">
-        <button className="logout-button" onClick={handlelogout}>logout</button>
+          <button className="logout-button" onClick={handlelogout}>
+            logout
+          </button>
         </div>
       </div>
       <div className="user-available-items">
@@ -77,12 +76,12 @@ export const ProfilePage = () => {
           <p>Buy history</p>
         </div>
         <div className="boughtContainer">
-            {boughtArray?.map((product, index) => (
-              <div key={index}>
-                <h3>{product.title}</h3>
-              </div>
-            ))}
-          </div>
+          {boughtArray?.map((product, index) => (
+            <div key={index}>
+              <h3>{product.title}</h3>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
