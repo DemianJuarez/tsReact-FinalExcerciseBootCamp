@@ -105,13 +105,13 @@ export const MetricsPage = () => {
           </h2>
 
           <BarChart
-            width={1200}
+            width={1250}
             height={300}
             data={dataBar}
             margin={{
               top: 20,
-              right: 30,
-              left: 20,
+              right: 20,
+              left: 0,
               bottom: 5,
             }}
           >
