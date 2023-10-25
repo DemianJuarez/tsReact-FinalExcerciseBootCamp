@@ -100,6 +100,10 @@ export const MetricsPage = () => {
     <div className="MetricsPageContainer">
       <div className="Container">
         <div className="BarContainer">
+          <h2>
+            Difference between products with oferts and products w/o oferts
+          </h2>
+
           <BarChart
             width={1200}
             height={300}
@@ -181,7 +185,7 @@ export const MetricsPage = () => {
                 data={dataPie}
                 cx="50%"
                 cy="50%"
-                outerRadius={80}
+                outerRadius={130}
                 fill="#8884d8"
                 label
               />

@@ -7,6 +7,7 @@ import { ShopContext } from "../context/ShopContext";
 import { saveToLocalStorage } from "../utilsStorage";
 import { numerator } from "../utils";
 import { Navigate } from "react-router-dom";
+import { Toaster, toast } from "sonner";
 
 export const WishListPage = () => {
   const { wishListArray, cartArray, setCartArray, setWishListArray } =
@@ -52,6 +53,7 @@ export const WishListPage = () => {
     <Navigate to="/login" />
   ) : (
     <div className="WishListContainer">
+      <Toaster />
       <div className="filter">
         <Filter />
       </div>
@@ -97,7 +99,10 @@ export const WishListPage = () => {
                   </div>
                   <div className="cell6 actions">
                     <button
-                      onClick={() => deleteProduct(product.id)}
+                      onClick={() => {
+                        deleteProduct(product.id);
+                        toast.success("Product deleted");
+                      }}
                       className="deleteButton"
                     >
                       Delete
@@ -105,6 +110,7 @@ export const WishListPage = () => {
                     <button
                       onClick={() => {
                         addToCart(product.id);
+                        toast.success("Product added to Cart");
                       }}
                       className="cartButton"
                     >

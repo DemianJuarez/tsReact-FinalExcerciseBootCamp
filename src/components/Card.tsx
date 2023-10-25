@@ -5,6 +5,7 @@ import { CartWishContext } from "../context/CartWishContext";
 import { ProductContext } from "../context/ProductContext";
 import { Link, useLocation } from "react-router-dom";
 import { saveToLocalStorage } from "../utilsStorage";
+import { Toaster, toast } from "sonner";
 
 export type CardProps = {
   rating: number;
@@ -51,6 +52,7 @@ function Card(props: CardProps) {
 
   return (
     <div className="card">
+      <Toaster />
       <div className="product-image-div">
         <p className="product-rating">{rating}/5</p>
         <div className="product-image">
@@ -67,8 +69,20 @@ function Card(props: CardProps) {
       <div className="buttons-div">
         {pathname === "/shop" && (
           <>
-            <Button text="Whishlist" onClick={addToWishlist} />
-            <Button text="Cart" onClick={addToCart} />
+            <Button
+              text="Whishlist"
+              onClick={() => {
+                addToWishlist;
+                toast.success("Product added to WishList");
+              }}
+            />
+            <Button
+              text="Cart"
+              onClick={() => {
+                addToCart;
+                toast.success("Product added to Cart");
+              }}
+            />
           </>
         )}
       </div>

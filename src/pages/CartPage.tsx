@@ -5,6 +5,7 @@ import { Card } from "../components/Card";
 import { saveToLocalStorage } from "../utilsStorage";
 import { numerator } from "../utils";
 import { Navigate } from "react-router-dom";
+import { Toaster, toast } from "sonner";
 
 export const CartPage = () => {
   const { cartArray, setBoughtArray, setCartArray, boughtArray } =
@@ -16,6 +17,7 @@ export const CartPage = () => {
     <Navigate to="/login" />
   ) : (
     <div className="container">
+      <Toaster />
       <div className="CartPageContainer">
         <h1>Cart</h1>
         <div className="cartContainer">
@@ -28,17 +30,27 @@ export const CartPage = () => {
                 price={numerator(product.price, product.discountPercentage)}
                 discountPercentage={product.discountPercentage}
                 stock={product.stock}
+                id={product.id}
               />
             </div>
           ))}
         </div>
         <div className="buttonContainer">
+          <h3>
+            Total Price:{" "}
+            {cartArray
+              .map((product) =>
+                numerator(product.price, product.discountPercentage)
+              )
+              .reduce((acc, currentValue) => acc + currentValue, 0)
+              .toFixed(2)}
+          </h3>
           <button
             onClick={() => {
               const updatedBoughtArray = [...boughtArray, ...cartArray];
               setBoughtArray(updatedBoughtArray);
+              toast.success("Products buyed");
               saveToLocalStorage("boughtList", updatedBoughtArray);
-
               setCartArray([]);
               localStorage.removeItem("cartList");
             }}
@@ -46,6 +58,7 @@ export const CartPage = () => {
             BUY
           </button>
         </div>
+        T
       </div>
     </div>
   );
