@@ -3,21 +3,23 @@ import { Button } from "./Button";
 import { useContext } from "react";
 import { CartWishContext } from "../context/CartWishContext";
 import { ProductContext } from "../context/ProductContext";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { saveToLocalStorage } from "../utilsStorage";
+import { Toaster, toast } from "sonner";
 
 export type CardProps = {
   rating: number;
   productImages: string[];
   name: string;
   price: number;
+  id: number;
   discountPercentage: number;
   stock: number;
 };
 
 function Card(props: CardProps) {
   const { products } = useContext(ProductContext);
-  const { rating, productImages, name, price, stock } = props;
+  const { rating, productImages, name, price, stock, id } = props;
   const { wishListArray, cartArray, setWishListArray, setCartArray } =
     useContext(CartWishContext);
 
@@ -50,6 +52,7 @@ function Card(props: CardProps) {
 
   return (
     <div className="card">
+      <Toaster />
       <div className="product-image-div">
         <p className="product-rating">{rating}/5</p>
         <div className="product-image">
@@ -57,15 +60,29 @@ function Card(props: CardProps) {
         </div>
       </div>
       <div className="product-description">
-        <p className="product-name">Name: {name}</p>
+        <Link className="product-name" to={`/product/:${id}`}>
+          <p className="product-name">Name: {name}</p>
+        </Link>
         <p className="product-price">Price: {price}</p>
         <p className="product-stock">Stock: {stock}</p>
       </div>
       <div className="buttons-div">
         {pathname === "/shop" && (
           <>
-            <Button text="Whishlist" onClick={addToWishlist} />
-            <Button text="Cart" onClick={addToCart} />
+            <Button
+              text="Whishlist"
+              onClick={() => {
+                addToWishlist;
+                toast.success("Product added to WishList");
+              }}
+            />
+            <Button
+              text="Cart"
+              onClick={() => {
+                addToCart;
+                toast.success("Product added to Cart");
+              }}
+            />
           </>
         )}
       </div>
