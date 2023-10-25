@@ -1,11 +1,9 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./NavBar.css";
 import { Link } from "react-router-dom";
 import { ProductContext } from "../context/ProductContext";
 import { useLocation } from "react-router-dom";
 import { DropdownMenu } from "./DropdownMenu.tsx";
-import { ShopPage } from "../pages/ShopPage.tsx";
-import { isObject } from "chart.js/helpers";
 
 
 const options: Option[] = [
@@ -16,18 +14,38 @@ const options: Option[] = [
 ];
 
 export const NavBar = () => {
-  var session = localStorage.getItem("sessionData");
+  const session = localStorage.getItem("sessionData");
   console.log({ session })
   const { open, imageProfile } = useContext(ProductContext);
   const location = useLocation();
   const { pathname } = location;
   const splitLocation = pathname.split("/");
+  const [userData, setUserData] = useState<{
+    username: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    phone: string;
+    address: string;
+    image: string;
+  } | null>(null);
+
+  useEffect(() => {
+    const sessionData = localStorage.getItem("sessionData");
+    if (sessionData) {
+      const userData = JSON.parse(sessionData);
+      setUserData(userData);
+    }
+  }, []);
+
 
   if (session) {
     var shoplink = "/profile";
+    var imglogoprofile = `${userData?.image}`;
     console.log("if profile");
   } else {
     var shoplink = "/login";
+    var imglogoprofile = "default-profile.svg";
     console.log("else login");
   };
 
@@ -37,7 +55,7 @@ export const NavBar = () => {
       <nav className="nav-container">
         <div className="left-side-nav">
           <Link to="/" className="gm2-nav">
-            <img className="image-gm2-nav" src="gm2-image.png" />
+            <img className="image-gm2-nav" src='as' />
           </Link>
           <Link to="/shop" className="title-nav">
             <h2>The best ecommerce ever</h2>
@@ -94,7 +112,7 @@ export const NavBar = () => {
           >
             <img
               className="image-profile-nav"
-              src={imageProfile !== "" ? imageProfile : "default-profile.svg"}
+              src={imageProfile !== "" ? imageProfile : `${imglogoprofile}`}
             />
           </Link>
         </div>
