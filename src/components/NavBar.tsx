@@ -5,6 +5,8 @@ import { ProductContext } from "../context/ProductContext";
 import { useLocation } from "react-router-dom";
 import { DropdownMenu } from "./DropdownMenu.tsx";
 import { ShopPage } from "../pages/ShopPage.tsx";
+import { isObject } from "chart.js/helpers";
+
 
 const options: Option[] = [
   { value: "/metrics", label: "Metrics" },
@@ -14,12 +16,21 @@ const options: Option[] = [
 ];
 
 export const NavBar = () => {
-  const session = localStorage.getItem("sessionData");
-
-  const { imageProfile } = useContext(ProductContext);
+  var session = localStorage.getItem("sessionData");
+  console.log({ session })
+  const { open, imageProfile } = useContext(ProductContext);
   const location = useLocation();
   const { pathname } = location;
   const splitLocation = pathname.split("/");
+
+  if (session) {
+    var shoplink = "/profile";
+    console.log("if profile");
+  } else {
+    var shoplink = "/login";
+    console.log("else login");
+  };
+
 
   return (
     <>
@@ -63,6 +74,7 @@ export const NavBar = () => {
               >
                 <span>WishList</span>
               </Link>
+
             </>
           )}
           <Link
@@ -73,8 +85,9 @@ export const NavBar = () => {
           >
             <span>Shop</span>
           </Link>
+
           <Link
-            to={session ? "/profile" : "/login"}
+            to={shoplink}
             className={
               splitLocation[1] === "login" ? "active login-nav" : "login-nav"
             }
