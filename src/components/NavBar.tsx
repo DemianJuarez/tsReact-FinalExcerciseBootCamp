@@ -55,7 +55,7 @@ export const NavBar = () => {
       <nav className="nav-container">
         <div className="left-side-nav">
           <Link to="/" className="gm2-nav">
-            <img className="image-gm2-nav" src='as' />
+            <img className="image-gm2-nav" src='gm2-image.png' />
           </Link>
           <Link to="/shop" className="title-nav">
             <h2>The best ecommerce ever</h2>
