@@ -63,7 +63,8 @@
 }
 
 .imagen-login {
-  width: 300px;
+  width: 20vw;
+  height: 40vh;
   border-radius: 10PX;
 }
 
@@ -80,17 +81,23 @@
   border: solid;
   background-color: orangered;
   border-color: black;
+  cursor: pointer;
+}
+.login-button:hover{
+  background-color: black;
+  color: orangered;
 }
 
 @media only screen and (max-device-width: 480px) {
   .imagen-login {
     width: 20vw;
+    height: 20vh;
     gap: 10px;
   }
 
   .container-login {
-    width: 80vw;
-    height: 30vh;
+    width: 85vw;
+    height: 26vh;
     gap: 10px;
   }
 }
