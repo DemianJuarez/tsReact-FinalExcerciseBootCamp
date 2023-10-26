@@ -1,8 +1,9 @@
 .megadiv {
-  padding: 10PX;
+  padding: 20PX;
   display: flex;
   flex-direction: column;
   width: 30vw;
+  height: 88vh;
   background-color: #d9d9d9;
   margin-left: 20px;
   margin-top: 20px;
@@ -42,17 +43,19 @@
   border: solid;
   border-radius: 50%;
   background-color: black;
-border-color: ;
   display: flex;
   justify-content: center;
+align-items: center;
   pad: 10px;
 }
 .user-profile-image img{
   padding: 20px;
+  width: 200px;
+  height: 200px;
 }
 
 .profile-container {
-  padding: 20px;
+  padding-bottom: 40px;
   display: flex;
   background-image: linear-gradient(to bottom, #d9d9d9, black);
   height: 100vh;
@@ -131,7 +134,7 @@ border-color: ;
 .user-available-items {
   box-sizing: border-box;
   border: solid;
-
+  height: 88vh;
   width: 100%;
   background-color: #d9d9d9;
   margin-top: 20px;
