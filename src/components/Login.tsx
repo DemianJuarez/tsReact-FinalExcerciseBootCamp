@@ -6,6 +6,7 @@ import "./Login.css";
 export const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [loginStatus, setLoginStatus] = useState("");
 
   const handleLogin = () => {
     fetch('https://dummyjson.com/auth/login', {
@@ -30,6 +31,7 @@ export const Login = () => {
       })
       .catch(error => {
         console.error(error.message);
+        setLoginStatus("Login failed. Please check your credentials.");
       });
   };
 
@@ -64,6 +66,9 @@ export const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
+        </div>
+        <div className="login-state">
+          <p>{loginStatus}</p>
         </div>
         <div className="button-container">
           <button className="login-button" onClick={handleLogin}>
