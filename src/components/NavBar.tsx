@@ -55,7 +55,7 @@ export const NavBar = () => {
       <nav className="nav-container">
         <div className="left-side-nav">
           <Link to="/" className="gm2-nav">
-            <img className="image-gm2-nav" src='gm2-image.png' />
+            <img className="image-gm2-nav" src="https://assets-global.website-files.com/640b80e04481e4775cf8acf3/640f86525f5dd28fe68b82b9_GM2%20logo%20White-%20Small.svg" />
           </Link>
           <Link to="/shop" className="title-nav">
             <h2>The best ecommerce ever</h2>
