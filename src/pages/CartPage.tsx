@@ -17,7 +17,7 @@ export const CartPage = () => {
     <Navigate to="/login" />
   ) : (
     <div className="container">
-      <Toaster />
+      <Toaster richColors />
       <div className="CartPageContainer">
         <h1>Cart</h1>
         <div className="cartContainer">
@@ -26,11 +26,19 @@ export const CartPage = () => {
               <Card
                 rating={product.rating}
                 productImages={product.images}
-                name={product.title}
-                price={numerator(product.price, product.discountPercentage)}
+                title={product.title}
+                price={product.price}
                 discountPercentage={product.discountPercentage}
                 stock={product.stock}
                 id={product.id}
+                category={product.category}
+                description={product.description}
+                brand={product.brand}
+                thumbnail={product.thumbnail}
+                discountedPrice={numerator(
+                  product.price,
+                  product.discountPercentage
+                )}
               />
             </div>
           ))}
@@ -58,7 +66,6 @@ export const CartPage = () => {
             BUY
           </button>
         </div>
-        T
       </div>
     </div>
   );

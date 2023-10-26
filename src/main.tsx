@@ -43,7 +43,6 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
                 element={
                   <LayoutPage>
                     <CartPage />
-                    <DetailsPage />
                   </LayoutPage>
                 }
               />
