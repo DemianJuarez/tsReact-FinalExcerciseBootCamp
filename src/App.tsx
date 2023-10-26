@@ -1,6 +1,26 @@
+import { useContext } from "react";
 import "./App.css";
+import { ProductContext, Producto } from "./context/ProductContext";
+import { Card } from "./components/Card";
+import { numerator } from "./utils";
 
 function App() {
+  const { products } = useContext(ProductContext);
+
+  function getRandomObjectsFromArray(products: Producto[], count: number) {
+    const randomObjects = [];
+    const arrayCopy = [...products];
+    while (randomObjects.length < count && arrayCopy.length > 0) {
+      const randomIndex = Math.floor(Math.random() * arrayCopy.length);
+      randomObjects.push(arrayCopy[randomIndex]);
+      arrayCopy.splice(randomIndex, 1);
+    }
+
+    return randomObjects;
+  }
+
+  const randomProducts = getRandomObjectsFromArray(products, 3);
+
   return (
     <section className="home">
       <div className="gm2-logo">
@@ -12,7 +32,29 @@ function App() {
       </div>
       <div className="featured">
         <h3>Featured Products</h3>
-        <div className="featured-cards"></div>
+        <div className="featured-cards">
+          {randomProducts.map((product, index) => (
+            <div className={`${product.title}`} key={index}>
+              <Card
+                rating={product.rating}
+                productImages={product.images}
+                title={product.title}
+                price={product.price}
+                discountPercentage={product.discountPercentage}
+                stock={product.stock}
+                id={product.id}
+                category={product.category}
+                description={product.description}
+                brand={product.brand}
+                thumbnail={product.thumbnail}
+                discountedPrice={numerator(
+                  product.price,
+                  product.discountPercentage
+                )}
+              />
+            </div>
+          ))}
+        </div>
       </div>
       <footer className="footer-home">
         <div className="footer-container">

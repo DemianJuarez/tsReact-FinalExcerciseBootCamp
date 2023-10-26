@@ -3,15 +3,20 @@ import { Button } from "./Button";
 import { useContext } from "react";
 import { CartWishContext } from "../context/CartWishContext";
 import { ProductContext } from "../context/ProductContext";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { saveToLocalStorage } from "../utilsStorage";
 import { Toaster, toast } from "sonner";
 
 export type CardProps = {
   rating: number;
   productImages: string[];
-  name: string;
+  title: string;
+  description: string;
+  discountedPrice: number;
   price: number;
+  brand: string;
+  thumbnail: string;
+  category: string;
   id: number;
   discountPercentage: number;
   stock: number;
@@ -19,7 +24,19 @@ export type CardProps = {
 
 function Card(props: CardProps) {
   const { products } = useContext(ProductContext);
-  const { rating, productImages, name, price, stock, id } = props;
+  const {
+    rating,
+    productImages,
+    title,
+    discountedPrice,
+    price,
+    brand,
+    category,
+    thumbnail,
+    description,
+    stock,
+    id,
+  } = props;
   const { wishListArray, cartArray, setWishListArray, setCartArray } =
     useContext(CartWishContext);
 
@@ -28,7 +45,7 @@ function Card(props: CardProps) {
 
   const addToWishlist = () => {
     const updatedWishArray = [...wishListArray];
-    const foundProduct = products.find((product) => product.title === name);
+    const foundProduct = products.find((product) => product.title === title);
 
     if (foundProduct) {
       updatedWishArray.push(foundProduct);
@@ -40,7 +57,7 @@ function Card(props: CardProps) {
 
   const addToCart = () => {
     const updatedCartArray = [...cartArray];
-    const foundProduct = products.find((product) => product.title === name);
+    const foundProduct = products.find((product) => product.title === title);
 
     if (foundProduct) {
       updatedCartArray.push(foundProduct);
@@ -49,6 +66,10 @@ function Card(props: CardProps) {
 
     saveToLocalStorage("cartList", updatedCartArray);
   };
+
+  const navigate = useNavigate();
+
+  const session = localStorage.getItem("sessionData");
 
   return (
     <div className="card">
@@ -60,8 +81,8 @@ function Card(props: CardProps) {
         </div>
       </div>
       <div className="product-description">
-        <Link className="product-name" to={`/product/:${id}`}>
-          <p className="product-name">Name: {name}</p>
+        <Link className="product-name" to={`/product/${id}`}>
+          <p className="product-name">Name: {title}</p>
         </Link>
         <p className="product-price">Price: ${price}</p>
         <p className="product-stock">Stock: {stock}</p>
@@ -72,15 +93,24 @@ function Card(props: CardProps) {
             <Button
               text="Whishlist"
               onClick={() => {
-                addToWishlist;
-                toast.success("Product added to WishList");
+                if (session) {
+                  addToWishlist();
+                  toast.success("Product added to WishList");
+                } else {
+                  navigate("/login");
+                }
               }}
             />
+
             <Button
               text="Cart"
               onClick={() => {
-                addToCart;
-                toast.success("Product added to Cart");
+                if (session) {
+                  addToCart();
+                  toast.success("Product added to Cart");
+                } else {
+                  navigate("/login");
+                }
               }}
             />
           </>

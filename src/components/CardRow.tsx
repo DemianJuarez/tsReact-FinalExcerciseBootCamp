@@ -4,7 +4,6 @@ import { Category, CategoryState } from "../pages/ShopPage";
 import { Card } from "./Card";
 import { ShopContext } from "../context/ShopContext";
 import { numerator } from "../utils";
-import { Link } from "react-router-dom";
 
 type CardRowProps = {
   products: Producto[];
@@ -39,13 +38,18 @@ export const CardRow = (props: CardRowProps) => {
         .map((e) => (
           <div className="product" key={e.title}>
             <Card
-              rating={e.rating}
-              productImages={e.images}
-              name={e.title}
-              price={numerator(e.price, e.discountPercentage)}
-              discountPercentage={e.discountPercentage}
-              stock={e.stock}
               id={e.id}
+              title={e.title}
+              description={e.description}
+              price={e.price}
+              discountPercentage={e.discountPercentage}
+              rating={e.rating}
+              stock={e.stock}
+              brand={e.brand}
+              category={e.category}
+              thumbnail={e.thumbnail}
+              productImages={e.images}
+              discountedPrice={numerator(e.price, e.discountPercentage)}
             />
           </div>
         ))}
