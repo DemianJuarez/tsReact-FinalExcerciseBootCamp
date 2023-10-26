@@ -20,7 +20,6 @@ function App() {
   }
 
   const randomProducts = getRandomObjectsFromArray(products, 3);
-  console.log(randomProducts);
 
   return (
     <section className="home">
