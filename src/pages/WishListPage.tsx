@@ -64,7 +64,7 @@ export const WishListPage = () => {
             <div className="cell2">Name</div>
             <div className="cell3">Brand</div>
             <div className="cell4">Price</div>
-            <div className="cell5">Images</div>
+            {/* <div className="cell5">Images</div> */}
             <div className="cell6">Actions</div>
           </div>
           <div className="productContainer">
@@ -85,7 +85,7 @@ export const WishListPage = () => {
                   <div className="cell4">
                     {numerator(product.price, product.discountPercentage)}
                   </div>
-                  <div className="cell5 cellImagenes">
+                  {/* <div className="cell5 cellImagenes">
                     {product.images.map((image, index) => (
                       <a
                         key={image}
@@ -96,7 +96,7 @@ export const WishListPage = () => {
                         Link_to_image_{index + 1}
                       </a>
                     ))}
-                  </div>
+                  </div> */}
                   <div className="cell6 actions">
                     <button
                       onClick={() => {

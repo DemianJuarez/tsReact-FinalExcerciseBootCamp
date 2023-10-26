@@ -67,7 +67,7 @@ export const ProfilePage = () => {
         </div>
         <div className="button-div">
           <button className="logout-button" onClick={handlelogout}>
-            logout
+            LOGOUT
           </button>
         </div>
       </div>

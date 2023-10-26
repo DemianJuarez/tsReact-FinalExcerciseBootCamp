@@ -84,7 +84,7 @@ function Card(props: CardProps) {
         <Link className="product-name" to={`/product/${id}`}>
           <p className="product-name">Name: {title}</p>
         </Link>
-        <p className="product-price">Price: {price}</p>
+        <p className="product-price">Price: ${price}</p>
         <p className="product-stock">Stock: {stock}</p>
       </div>
       <div className="buttons-div">

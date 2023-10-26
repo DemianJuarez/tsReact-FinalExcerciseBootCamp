@@ -10,33 +10,44 @@
 }
 
 .tableContainer {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
   padding: 30px;
   padding-left: 40px;
 }
 
 .table {
+  border-radius: 10px;
   background-color: #969696;
-  height: 500px;
-  width: 900px;
+  height: 70vh;
+  width: 70vw;
   overflow: auto;
+  border: solid;
 }
 
 .rowHeader {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   background: #969696;
   padding: 10px;
   gap: 10px;
-  height: 10px;
+  height: 20px;
+  font-weight: bold;
 }
 
 .row {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  background: #b6b6b6;
+  background: #B6B6B6;
   padding: 10px;
-  gap: 10px;
+  gap: 190px;
   height: 30px;
+  /* border-left: solid;
+  border-top: solid;
+  border-right: solid; */
+
+
 }
 
 .cellImagenes {
@@ -66,13 +77,23 @@
 }
 
 .deleteButton {
+  cursor: pointer;
   width: 70px;
-  background-color: rgba(255, 0, 0, 0.74);
+  background-color: rgba(255, 0, 0, 0.639);
   border: none;
   border-radius: 10px;
 }
-
+.deleteButton:hover{
+  background-color: white;
+  color: rgba(255, 0, 0, 0.639);
+}
 .cartButton {
+  cursor: pointer;
   width: 50px;
   border-radius: 10px;
+  border: none;
+}
+.cartButton:hover{
+  background-color: black;
+  color: white;
 }

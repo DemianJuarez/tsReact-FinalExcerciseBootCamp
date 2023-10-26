@@ -5,8 +5,9 @@
   flex-direction: row;
   justify-content: space-between;
   color: whitesmoke;
-  padding-left: 5px;
-  padding-right: 5px;
+  padding-left: 9px;
+  padding-right: 9px;
+
 }
 
 .left-side-nav {
