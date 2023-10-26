@@ -45,7 +45,7 @@ export const CartPage = () => {
         </div>
         <div className="buttonContainer">
           <h3>
-            Total Price:{" "}
+            Total Price: ${" "}
             {cartArray
               .map((product) =>
                 numerator(product.price, product.discountPercentage)
