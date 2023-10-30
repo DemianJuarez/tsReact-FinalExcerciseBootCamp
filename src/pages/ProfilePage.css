@@ -1,5 +1,5 @@
 .megadiv {
-  padding: 20PX;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   width: 30vw;
@@ -45,20 +45,19 @@
   background-color: black;
   display: flex;
   justify-content: center;
-align-items: center;
+  align-items: center;
   pad: 10px;
 }
-.user-profile-image img{
+.user-profile-image img {
   padding: 20px;
   width: 200px;
   height: 200px;
 }
 
 .profile-container {
-  padding-bottom: 40px;
   display: flex;
   background-image: linear-gradient(to bottom, #d9d9d9, black);
-  height: 100vh;
+  height: calc(100vh - 42px);
   width: 100vw;
   gap: 20px;
 }
@@ -107,26 +106,23 @@ align-items: center;
   color: #797777;
 }
 
-
 .button-div {
   height: 20vh;
   display: flex;
   justify-content: center;
   align-items: center;
   padding-right: 1vw;
-
 }
-
 
 .logout-button {
   width: 5vw;
   height: 5vh;
   background-color: rgba(255, 0, 0, 0.766);
   border: none;
-  border-radius:10px ;
+  border-radius: 10px;
   cursor: pointer;
 }
-.logout-button:hover{
+.logout-button:hover {
   background-color: firebrick;
   color: black;
 }
