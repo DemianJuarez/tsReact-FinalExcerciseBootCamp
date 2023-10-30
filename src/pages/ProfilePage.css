@@ -48,10 +48,15 @@
   align-items: center;
   pad: 10px;
 }
+
 .user-profile-image img {
   padding: 20px;
   width: 200px;
   height: 200px;
+}
+
+.buy-history p {
+  font-size: 37px;
 }
 
 .profile-container {
@@ -122,6 +127,7 @@
   border-radius: 10px;
   cursor: pointer;
 }
+
 .logout-button:hover {
   background-color: firebrick;
   color: black;
@@ -137,8 +143,35 @@
   margin-right: 20px;
   padding-left: 30px;
   padding-top: 30px;
+  padding-right: 30px;
   font-size: 25px;
   border-radius: 20px;
+}
+
+
+.boughtContainerProfile {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: #bebcbc;
+  padding-left: 20px;
+  padding-right: 30px;
+  margin-top: 20px;
+  height: 80%;
+  overflow: scroll;
+  border-radius: 25px;
+}
+
+
+.boughtContainerProfile div {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: #bebcbc;
+  border: solid;
+  height: 45px;
 }
 
 @media only screen and (max-device-width: 480px) {
@@ -180,4 +213,16 @@
     height: 0;
     width: 0;
   }
+
+  html {
+    background-color: #797777;
+  }
+
+  .user-profile-image {
+    padding: 20px;
+    width: 100px;
+    height: 100px;
+  }
+
+  .user-profile-image img {}
 }
