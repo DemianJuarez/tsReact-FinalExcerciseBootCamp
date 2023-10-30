@@ -11,7 +11,7 @@ export const ProfilePage = () => {
     firstName: string;
     lastName: string;
     email: string;
-    phone: string;
+    gender: string;
     address: string;
     image: string;
   } | null>(null);
@@ -46,7 +46,7 @@ export const ProfilePage = () => {
           <div className="default-text">
             <p className="full-name-text">Full Name</p>
             <p className="email-text">Email</p>
-            <p className="phone-text">Phone</p>
+            <p className="phone-text">Gender</p>
             <p className="address-text">Address</p>
           </div>
           <div className="personal-info">
@@ -58,7 +58,7 @@ export const ProfilePage = () => {
               <p className="email">{userData?.email}</p>
             </div>
             <div className="phone-div">
-              <p className="phone">{userData?.phone}</p>
+              <p className="phone">{userData?.gender}</p>
             </div>
             <div className="address-div">
               <p className="address">1</p>
