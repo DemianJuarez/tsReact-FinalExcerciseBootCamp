@@ -75,7 +75,7 @@ export const ProfilePage = () => {
         <div className="buy-history">
           <p>Buy history</p>
         </div>
-        <div className="boughtContainer">
+        <div className="boughtContainerProfile">
           {boughtArray?.map((product, index) => (
             <div key={index}>
               <h3>{product.title}</h3>
